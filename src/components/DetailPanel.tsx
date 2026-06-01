@@ -294,6 +294,49 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
             <HghScoreCard score={day.hghScore} tip={hghTip} exercises={day.exercises} />
           )}
 
+          {/* Prominent Start/Resume Button in Center */}
+          {isWorkout && (
+            <div className="center-start-action fade-in">
+              {hasSavedSession ? (
+                <div className="center-resume-wrapper">
+                  <button
+                    className="center-start-btn resume"
+                    onClick={() => setIsPlaying(true)}
+                  >
+                    <span className="play-icon">▶</span>
+                    <div>
+                      <div className="btn-main-txt">LANJUTKAN LATIHAN</div>
+                      <div className="btn-sub-txt">Sesi tersimpan terdeteksi · Ketuk untuk lanjut</div>
+                    </div>
+                  </button>
+                  <button
+                    className="center-reset-btn"
+                    onClick={() => {
+                      if (confirm('Apakah Anda yakin ingin mengulang latihan dari awal?')) {
+                        localStorage.removeItem(savedSessionKey);
+                        setHasSavedSession(false);
+                      }
+                    }}
+                    title="Mulai Ulang dari Awal"
+                  >
+                    🔄 Ulang Baru
+                  </button>
+                </div>
+              ) : (
+                <button
+                  className="center-start-btn"
+                  onClick={() => setIsPlaying(true)}
+                >
+                  <span className="play-icon">▶</span>
+                  <div>
+                    <div className="btn-main-txt">MULAI LATIHAN SEKARANG</div>
+                    <div className="btn-sub-txt">Ikuti panduan set & timer audio otomatis</div>
+                  </div>
+                </button>
+              )}
+            </div>
+          )}
+
           {/* Warm-Up Section */}
           {isWorkout && expandedWarmUps.length > 0 && (
             <div className="detail-section warm-up-section">

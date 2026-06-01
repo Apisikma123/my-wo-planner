@@ -585,5 +585,132 @@
   }
 }
 
+/* Center Start Workout Button & Animations */
+.center-start-action {
+  margin: 20px 0 10px;
+}
+
+.center-start-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(204, 255, 0, 0.15) 0%, rgba(204, 255, 0, 0.04) 100%);
+  border: 1px solid rgba(204, 255, 0, 0.3);
+  border-radius: 16px;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 30px rgba(204, 255, 0, 0.06), inset 0 0 15px rgba(204, 255, 0, 0.02);
+}
+
+.center-start-btn.resume {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.04) 100%);
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.06), inset 0 0 15px rgba(59, 130, 246, 0.02);
+}
+
+.center-start-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(204, 255, 0, 0.7);
+  box-shadow: 0 12px 35px rgba(204, 255, 0, 0.15), 0 0 12px rgba(204, 255, 0, 0.1);
+}
+
+.center-start-btn.resume:hover {
+  border-color: rgba(59, 130, 246, 0.7);
+  box-shadow: 0 12px 35px rgba(59, 130, 246, 0.15), 0 0 12px rgba(59, 130, 246, 0.1);
+}
+
+.center-start-btn:active {
+  transform: translateY(0);
+}
+
+.center-start-btn .play-icon {
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccff00;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
+  animation: buttonPulse 2.5s infinite;
+}
+
+.center-start-btn.resume .play-icon {
+  background: #3b82f6;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  animation: resumePulse 2.5s infinite;
+}
+
+.btn-main-txt {
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.btn-sub-txt {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 3px;
+  font-weight: 500;
+}
+
+.center-resume-wrapper {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.center-resume-wrapper .center-start-btn {
+  flex: 1;
+}
+
+.center-reset-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  padding: 0 16px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+}
+
+.center-reset-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #ff4d4d;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+  transform: translateY(-1px);
+}
+
+@keyframes buttonPulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(204, 255, 0, 0.5); }
+  50% { transform: scale(1.06); box-shadow: 0 0 16px rgba(204, 255, 0, 0.7); }
+  100% { transform: scale(1); box-shadow: 0 0 10px rgba(204, 255, 0, 0.5); }
+}
+
+@keyframes resumePulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+  50% { transform: scale(1.06); box-shadow: 0 0 16px rgba(59, 130, 246, 0.7); }
+  100% { transform: scale(1); box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+}
+
+
 
 

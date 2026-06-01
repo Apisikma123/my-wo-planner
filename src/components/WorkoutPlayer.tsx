@@ -31,6 +31,7 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
   const [restDuration, setRestDuration] = useState<number>(() => savedSession?.restDuration ?? 60);
   const [timeRemaining, setTimeRemaining] = useState<number>(() => savedSession?.timeRemaining ?? 0);
   const [isFinished, setIsFinished] = useState<boolean>(false);
+  const [showCloseConfirm, setShowCloseConfirm] = useState<boolean>(false);
   
   // Custom timer for timed exercises (e.g. Warm-up, Dead hang, Cool-down)
   const [exerciseTimer, setExerciseTimer] = useState<number | null>(() => {
@@ -137,6 +138,8 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
     beepedSeconds.current = {};
 
     intervalRef.current = setInterval(() => {
+      if (showCloseConfirm) return; // Pause timer when confirmation modal is visible
+      
       if (isResting) {
         setTimeRemaining((prev) => {
           if (prev <= 1) {
@@ -173,7 +176,7 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [isResting, exerciseTimer, isTimerPaused, currentIdx, currentSet]);
+  }, [isResting, exerciseTimer, isTimerPaused, currentIdx, currentSet, showCloseConfirm]);
 
   const handleDone = () => {
     if (!currentExercise) return;
@@ -275,9 +278,35 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
   return (
     <div className="workout-player-overlay">
       <div className="workout-player-card scale-in">
+        {showCloseConfirm && (
+          <div className="player-confirm-overlay">
+            <div className="player-confirm-modal scale-in">
+              <div className="confirm-icon">⚠️</div>
+              <h3 className="confirm-title">Batalkan Latihan?</h3>
+              <p className="confirm-text">
+                Apakah Anda yakin ingin keluar dari latihan ini? Progres latihan Anda telah disimpan secara otomatis dan dapat dilanjutkan kapan saja.
+              </p>
+              <div className="confirm-actions">
+                <button 
+                  className="confirm-btn-primary" 
+                  onClick={() => setShowCloseConfirm(false)}
+                >
+                  Tetap Latihan
+                </button>
+                <button 
+                  className="confirm-btn-danger" 
+                  onClick={onClose}
+                >
+                  Ya, Keluar
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        
         {/* Top Navbar */}
         <div className="player-header">
-          <button className="player-back" onClick={onClose}>✕ Batal</button>
+          <button className="player-back" onClick={() => setShowCloseConfirm(true)}>✕ Batal</button>
           <div className="player-progress">
             Latihan {currentIdx + 1} dari {exercises.length}
           </div>
