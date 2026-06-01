@@ -1,5 +1,10 @@
 import { getDailyChecklist } from '../utils/constants';
+import { Zap, Activity, Anchor, Moon, Droplets, Beef, LucideIcon } from 'lucide-react';
 import './DailyChecklist.css';
+
+const iconMap: Record<string, LucideIcon> = {
+  Zap, Activity, Anchor, Moon, Droplets, Beef,
+};
 
 interface DailyChecklistProps {
   isoDate?: string;
@@ -11,19 +16,28 @@ export default function DailyChecklist({ isoDate, workoutType }: DailyChecklistP
   
   return (
     <div className="daily-checklist">
-      <div className="checklist-title">📌 WAJIB HARIAN</div>
+      <div className="checklist-title">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ verticalAlign: 'middle', marginRight: 4 }}>
+          <path d="M12 2L12 22" /><path d="M5 5L12 2L19 5" />
+        </svg>
+        WAJIB HARIAN
+      </div>
       <div className="checklist-grid">
-        {list.map(item => (
-          <div key={item.label} className="checklist-item" style={{ borderColor: `${item.color}25` }}>
-            <div className="checklist-icon">{item.icon}</div>
-            <div className="checklist-content">
-              <div className="checklist-label">{item.label}</div>
-              <div className="checklist-value" style={{ color: item.color }}>{item.value}</div>
+        {list.map(item => {
+          const IconComp = iconMap[item.icon];
+          return (
+            <div key={item.label} className="checklist-item" style={{ borderColor: `${item.color}25` }}>
+              <div className="checklist-icon">
+                {IconComp ? <IconComp size={18} style={{ color: item.color }} /> : <span style={{ color: item.color }}>{item.icon}</span>}
+              </div>
+              <div className="checklist-content">
+                <div className="checklist-label">{item.label}</div>
+                <div className="checklist-value" style={{ color: item.color }}>{item.value}</div>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
 }
-

@@ -1,6 +1,6 @@
 import { useCallback, useState, useEffect } from 'react';
 import { WorkoutDay, Exercise } from '../types';
-import { TYPE_COLORS, TYPE_ICONS, TYPE_LABELS, PHASE_COLORS, PHASE_LABELS } from '../utils/constants';
+import { TYPE_COLORS, TYPE_LABELS, PHASE_COLORS, PHASE_LABELS } from '../utils/constants';
 import { formatFullDate } from '../utils/dateUtils';
 import { getHghTip } from '../engine/hghEngine';
 import { getFatigueLabel, getFatigueColor } from '../engine/fatigueEngine';
@@ -12,6 +12,11 @@ import ReadinessGauge from './ReadinessGauge';
 import RecoveryMeter from './RecoveryMeter';
 import HghScoreCard from './HghScoreCard';
 import WorkoutPlayer from './WorkoutPlayer';
+import { 
+  X, Clock, Flame, Dumbbell, Dna, Zap, ClipboardList,
+  Lightbulb, Play, RotateCcw, Check, Rocket,
+  PersonStanding, Footprints, RotateCcw as RotateIcon
+} from 'lucide-react';
 import './DetailPanel.css';
 
 // Dictionary of warm-up and cool-down movement instruction guides
@@ -209,12 +214,22 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
     return 'RINGAN';
   };
 
+  // Get icon for workout type in hero
+  const getTypeIcon = () => {
+    if (day.workoutType === 'push') return <Dumbbell size={14} />;
+    if (day.workoutType === 'pull') return <RotateCcw size={14} />;
+    if (day.workoutType === 'legs') return <Footprints size={14} />;
+    return <PersonStanding size={14} />;
+  };
+
   return (
     <div className="detail-overlay" onClick={onClose}>
       <div className="detail-panel scale-in" onClick={e => e.stopPropagation()}>
         <div className="detail-drag-handle" />
         {/* Close button */}
-        <button className="detail-close" onClick={onClose} aria-label="Close">✕</button>
+        <button className="detail-close" onClick={onClose} aria-label="Close">
+          <X size={14} />
+        </button>
 
         {/* Hero Cover Image Section */}
         <div 
@@ -225,7 +240,7 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
         >
           <div className="detail-hero-content">
             <span className="detail-hero-tag" style={{ background: `${col}20`, color: col, borderColor: `${col}40` }}>
-              {TYPE_ICONS[day.workoutType]} {TYPE_LABELS[day.workoutType]}
+              {getTypeIcon()} <span style={{ marginLeft: 4 }}>{TYPE_LABELS[day.workoutType]}</span>
             </span>
             <h1 className="detail-hero-title">
               {day.workoutType === 'push' ? 'Upper Body Push Booster' : day.workoutType === 'pull' ? 'Back & Biceps HGH Pull' : day.workoutType === 'legs' ? 'Legs & Durability Plyo' : 'Active Recovery Session'}
@@ -241,28 +256,28 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
         {isWorkout && (
           <div className="detail-metrics-grid">
             <div className="metric-item">
-              <span className="metric-icon">⏱️</span>
+              <span className="metric-icon"><Clock size={18} /></span>
               <div className="metric-info">
                 <span className="metric-lbl">DURASI</span>
                 <span className="metric-val">{getWorkoutDuration()}</span>
               </div>
             </div>
             <div className="metric-item">
-              <span className="metric-icon">🔥</span>
+              <span className="metric-icon"><Flame size={18} /></span>
               <div className="metric-info">
                 <span className="metric-lbl">EST. KALORI</span>
                 <span className="metric-val">{getEstimatedCalories()}</span>
               </div>
             </div>
             <div className="metric-item">
-              <span className="metric-icon">💪</span>
+              <span className="metric-icon"><Dumbbell size={18} /></span>
               <div className="metric-info">
                 <span className="metric-lbl">KESULITAN</span>
                 <span className="metric-val" style={{ color: day.phase === 'peak' ? '#ff3e3e' : '#fff' }}>{getDifficultyLevel()}</span>
               </div>
             </div>
             <div className="metric-item">
-              <span className="metric-icon">🧬</span>
+              <span className="metric-icon"><Dna size={18} /></span>
               <div className="metric-info">
                 <span className="metric-lbl">HGH STIMULUS</span>
                 <span className="metric-val" style={{ color: '#ccff00' }}>EXTREME</span>
@@ -303,7 +318,7 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
                     className="center-start-btn resume"
                     onClick={() => setIsPlaying(true)}
                   >
-                    <span className="play-icon">▶</span>
+                    <span className="play-icon"><Play size={18} /></span>
                     <div>
                       <div className="btn-main-txt">LANJUTKAN LATIHAN</div>
                       <div className="btn-sub-txt">Sesi tersimpan terdeteksi · Ketuk untuk lanjut</div>
@@ -319,7 +334,7 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
                     }}
                     title="Mulai Ulang dari Awal"
                   >
-                    🔄 Ulang Baru
+                    <RotateIcon size={14} /> Ulang Baru
                   </button>
                 </div>
               ) : (
@@ -327,7 +342,7 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
                   className="center-start-btn"
                   onClick={() => setIsPlaying(true)}
                 >
-                  <span className="play-icon">▶</span>
+                  <span className="play-icon"><Play size={18} /></span>
                   <div>
                     <div className="btn-main-txt">MULAI LATIHAN SEKARANG</div>
                     <div className="btn-sub-txt">Ikuti panduan set & timer audio otomatis</div>
@@ -341,7 +356,7 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
           {isWorkout && expandedWarmUps.length > 0 && (
             <div className="detail-section warm-up-section">
               <div className="detail-section-title">
-                <span>⚡ 1. PEMANASAN DINAMIS (WARM-UP)</span>
+                <span><Zap size={13} style={{ verticalAlign: 'middle', marginRight: 4 }} /> 1. PEMANASAN DINAMIS (WARM-UP)</span>
                 <span className="mandatory-tag">WAJIB</span>
               </div>
               <p className="section-subtitle">Disesuaikan khusus untuk mempersiapkan otot yang akan dilatih hari ini.</p>
@@ -362,7 +377,13 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
           {/* Main Workout Routine Timeline */}
           <div className="detail-section">
             <div className="detail-section-title">
-              <span>{isWorkout ? '🏋️ 2. RUTINITAS UTAMA' : '📋 PROGRAM HARI INI'}</span>
+              <span>
+                {isWorkout ? (
+                  <><Dumbbell size={13} style={{ verticalAlign: 'middle', marginRight: 4 }} /> 2. RUTINITAS UTAMA</>
+                ) : (
+                  <><ClipboardList size={13} style={{ verticalAlign: 'middle', marginRight: 4 }} /> PROGRAM HARI INI</>
+                )}
+              </span>
             </div>
             <div className="detail-exercise-list">
               {(isWorkout ? mainExercises : day.exercises).map((ex, i) => (
@@ -380,7 +401,7 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
           {isWorkout && expandedCoolDowns.length > 0 && (
             <div className="detail-section cool-down-section">
               <div className="detail-section-title">
-                <span>🧘 3. PENDINGINAN (COOL-DOWN)</span>
+                <span><PersonStanding size={13} style={{ verticalAlign: 'middle', marginRight: 4 }} /> 3. PENDINGINAN (COOL-DOWN)</span>
               </div>
               <div className="detail-exercise-list">
                 {expandedCoolDowns.map((ex, i) => (
@@ -400,7 +421,9 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
 
           {/* HGH Tip */}
           <div className="detail-tip">
-            <div className="detail-tip-label">💡 HGH TIP</div>
+            <div className="detail-tip-label">
+              <Lightbulb size={12} style={{ verticalAlign: 'middle', marginRight: 4 }} /> HGH TIP
+            </div>
             <div className="detail-tip-text">{hghTip}</div>
           </div>
         </div>
@@ -414,7 +437,7 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
                   className="start-workout-btn resume-btn"
                   onClick={() => setIsPlaying(true)}
                 >
-                  🚀 LANJUTKAN LATIHAN
+                  <Rocket size={14} style={{ verticalAlign: 'middle', marginRight: 6 }} /> LANJUTKAN LATIHAN
                 </button>
                 <button
                   className="reset-workout-btn"
@@ -426,7 +449,7 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
                   }}
                   title="Mulai Ulang dari Awal"
                 >
-                  🔄 Ulang Baru
+                  <RotateIcon size={13} style={{ marginRight: 4 }} /> Ulang Baru
                 </button>
               </div>
             ) : (
@@ -434,7 +457,7 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
                 className="start-workout-btn"
                 onClick={() => setIsPlaying(true)}
               >
-                🚀 MULAI LATIHAN SEKARANG
+                <Rocket size={14} style={{ verticalAlign: 'middle', marginRight: 6 }} /> MULAI LATIHAN SEKARANG
               </button>
             )
           )}
@@ -448,7 +471,8 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
               color: isCompleted ? '#22c55e' : col,
             }}
           >
-            {isCompleted ? '✓ TANDAI BELUM SELESAI' : '✓ TANDAI SELESAI MANUAL'}
+            <Check size={14} style={{ verticalAlign: 'middle', marginRight: 6 }} />
+            {isCompleted ? 'TANDAI BELUM SELESAI' : 'TANDAI SELESAI MANUAL'}
           </button>
         </div>
 

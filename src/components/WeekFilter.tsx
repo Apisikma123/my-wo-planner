@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { useWorkoutEngine } from '../hooks/useWorkoutEngine';
+import { CalendarDays, Moon, Plus } from 'lucide-react';
 import './WeekFilter.css';
 
 export default function WeekFilter() {
@@ -43,7 +44,7 @@ export default function WeekFilter() {
           className={`month-tab ${activeFilter === 'all' ? 'active' : ''}`}
           onClick={handleShowAll}
         >
-          📅 SEMUA BULAN
+          <CalendarDays size={12} style={{ marginRight: 4, verticalAlign: 'middle' }} /> SEMUA BULAN
         </button>
         {Array.from({ length: totalMonths }, (_, i) => i + 1).map((m) => (
           <button
@@ -51,11 +52,11 @@ export default function WeekFilter() {
             className={`month-tab ${activeFilter.startsWith('month-') && activeMonth === m ? 'active' : activeFilter !== 'all' && activeMonth === m ? 'active-parent' : ''}`}
             onClick={() => handleMonthSelect(m)}
           >
-            🌙 BULAN {m}
+            <Moon size={11} style={{ marginRight: 4, verticalAlign: 'middle' }} /> BULAN {m}
           </button>
         ))}
         <button className="month-tab load-more-tab" onClick={loadMore} title="Tambah Bulan Baru">
-          ➕ TAMBAH MINGGU
+          <Plus size={12} style={{ marginRight: 4, verticalAlign: 'middle' }} /> TAMBAH MINGGU
         </button>
       </div>
 

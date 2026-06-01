@@ -1,6 +1,7 @@
 import { useStats } from '../hooks/useStats';
 import { PHASE_COLORS, PHASE_LABELS, PHASE_DESCRIPTIONS } from '../utils/constants';
 import { Phase } from '../types';
+import { RefreshCw } from 'lucide-react';
 import './ProgressionBadge.css';
 
 export default function ProgressionBadge() {
@@ -18,7 +19,7 @@ export default function ProgressionBadge() {
     <div className="progression-badge" style={{ borderColor: `${color}20` }}>
       <div className="pb-header">
         <div className="pb-title">
-          <span className="pb-cycle-icon">⚙️</span>
+          <RefreshCw size={12} style={{ verticalAlign: 'middle', marginRight: 4 }} />
           <span>MESOCYCLE {stats.currentMesocycle}</span>
         </div>
         <div className="pb-week" style={{ color, borderColor: `${color}40`, background: `${color}10` }}>

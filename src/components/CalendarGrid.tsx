@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useWorkoutEngine } from '../hooks/useWorkoutEngine';
 import { PHASE_COLORS, PHASE_LABELS } from '../utils/constants';
 import { Phase } from '../types';
+import { CalendarDays, ChevronDown } from 'lucide-react';
 import DayCard from './DayCard';
 import './CalendarGrid.css';
 
@@ -43,7 +44,7 @@ export default function CalendarGrid() {
       {/* Month Banner */}
       {showMonthBanner && (
         <div className="month-banner fade-in">
-          <span className="month-banner-icon">📅</span>
+          <CalendarDays size={16} className="month-banner-icon" />
           <div>
             <div className="month-banner-title">Bulan {activeMonthNum}</div>
             <div className="month-banner-sub">Mulai {bannerStartDate} · {sortedWeeks.length} Minggu</div>
@@ -88,7 +89,7 @@ export default function CalendarGrid() {
       {/* fallback load more for 'all' filter */}
       {activeFilter === 'all' && (
         <button className="load-more-btn" onClick={loadMore}>
-          ⬇ MUAT LEBIH BANYAK MINGGU
+          <ChevronDown size={14} style={{ verticalAlign: 'middle', marginRight: 4 }} /> MUAT LEBIH BANYAK MINGGU
         </button>
       )}
     </div>

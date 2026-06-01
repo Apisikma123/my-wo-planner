@@ -3,6 +3,7 @@ import { useStats } from '../hooks/useStats';
 import { useWorkoutEngine } from '../hooks/useWorkoutEngine';
 import { PHASE_COLORS, PHASE_LABELS } from '../utils/constants';
 import { Phase } from '../types';
+import { BarChart3, Flame } from 'lucide-react';
 import './StatsPanel.css';
 
 export default function StatsPanel() {
@@ -14,7 +15,9 @@ export default function StatsPanel() {
   return (
     <div className="stats-panel slide-up">
       <div className="stats-header">
-        <span className="stats-title">📊 DASHBOARD</span>
+        <span className="stats-title">
+          <BarChart3 size={12} style={{ verticalAlign: 'middle', marginRight: 4 }} /> DASHBOARD
+        </span>
         <span className="stats-badge" style={{ color: phaseColor, borderColor: `${phaseColor}40`, background: `${phaseColor}12` }}>
           MC{stats.currentMesocycle} · {PHASE_LABELS[stats.currentPhase as Phase] || stats.currentPhase}
         </span>
@@ -22,7 +25,9 @@ export default function StatsPanel() {
       
       <div className="stats-grid">
         <div className="stat-card">
-          <div className="stat-value" style={{ color: '#ff6b35' }}>🔥 {streak}</div>
+          <div className="stat-value" style={{ color: '#ff6b35' }}>
+            <Flame size={16} style={{ verticalAlign: 'middle', marginRight: 2 }} /> {streak}
+          </div>
           <div className="stat-label">STREAK</div>
         </div>
         <div className="stat-card">

@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Exercise, WorkoutDay } from '../types';
+import { 
+  X, Trophy, Dna, AlertTriangle, Play, Pause, 
+  Check, Flag, ArrowRight, SkipForward,
+  PersonStanding, Zap, Activity, Anchor, Dumbbell
+} from 'lucide-react';
 import './WorkoutPlayer.css';
 
 interface WorkoutPlayerProps {
@@ -221,12 +226,12 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
     handleRestCompleted();
   };
 
-  const getExerciseImage = (category: string) => {
-    if (category === 'mobility') return '🧘';
-    if (category === 'sprint') return '⚡';
-    if (category === 'conditioning') return '🏃';
-    if (category === 'recovery') return '🪝';
-    return '🏋️';
+  const getExerciseIcon = (category: string) => {
+    if (category === 'mobility') return <PersonStanding size={48} />;
+    if (category === 'sprint') return <Zap size={48} />;
+    if (category === 'conditioning') return <Activity size={48} />;
+    if (category === 'recovery') return <Anchor size={48} />;
+    return <Dumbbell size={48} />;
   };
 
   // Nasal breathing biohacking tips for growth hormone stimulus
@@ -243,7 +248,7 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
     return (
       <div className="workout-player-overlay">
         <div className="workout-player-card scale-in finished-card">
-          <div className="trophy-icon">🏆</div>
+          <div className="trophy-icon"><Trophy size={64} strokeWidth={1.5} /></div>
           <h2 className="finished-title">WORKOUT SELESAI!</h2>
           <p className="finished-subtitle">Tubuh Anda telah dirangsang untuk melepas HGH alami & meningkatkan durability fisik.</p>
           
@@ -281,7 +286,7 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
         {showCloseConfirm && (
           <div className="player-confirm-overlay">
             <div className="player-confirm-modal scale-in">
-              <div className="confirm-icon">⚠️</div>
+              <div className="confirm-icon"><AlertTriangle size={36} strokeWidth={1.5} /></div>
               <h3 className="confirm-title">Batalkan Latihan?</h3>
               <p className="confirm-text">
                 Apakah Anda yakin ingin keluar dari latihan ini? Progres latihan Anda telah disimpan secara otomatis dan dapat dilanjutkan kapan saja.
@@ -306,7 +311,9 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
         
         {/* Top Navbar */}
         <div className="player-header">
-          <button className="player-back" onClick={() => setShowCloseConfirm(true)}>✕ Batal</button>
+          <button className="player-back" onClick={() => setShowCloseConfirm(true)}>
+            <X size={14} style={{ verticalAlign: 'middle', marginRight: 4 }} /> Batal
+          </button>
           <div className="player-progress">
             Latihan {currentIdx + 1} dari {exercises.length}
           </div>
@@ -340,7 +347,7 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
             </div>
 
             <div className="rest-tip-card">
-              <div className="tip-icon">🧬</div>
+              <div className="tip-icon"><Dna size={20} /></div>
               <div className="tip-content">
                 <div className="tip-title">HGH OPTIMIZATION TIP</div>
                 <p className="tip-desc">{currentTip}</p>
@@ -348,14 +355,14 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
             </div>
 
             <button className="skip-rest-btn" onClick={handleSkipRest}>
-              LEWATI ISTIRAHAT ➜
+              LEWATI ISTIRAHAT <SkipForward size={14} style={{ verticalAlign: 'middle', marginLeft: 4 }} />
             </button>
           </div>
         ) : (
           /* ACTIVE EXERCISE VIEW */
           <div className="player-active-screen fade-in">
             <div className="exercise-media-placeholder">
-              <div className="media-icon">{getExerciseImage(currentExercise.category)}</div>
+              <div className="media-icon">{getExerciseIcon(currentExercise.category)}</div>
               <div className="media-glow" />
             </div>
 
@@ -388,7 +395,11 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
                       className={`timer-control-btn ${isTimerPaused ? 'paused' : ''}`}
                       onClick={() => setIsTimerPaused(!isTimerPaused)}
                     >
-                      {isTimerPaused ? '▶ MULAI TIMER' : '⏸ JEDA TIMER'}
+                      {isTimerPaused ? (
+                        <><Play size={12} style={{ verticalAlign: 'middle', marginRight: 4 }} /> MULAI TIMER</>
+                      ) : (
+                        <><Pause size={12} style={{ verticalAlign: 'middle', marginRight: 4 }} /> JEDA TIMER</>
+                      )}
                     </button>
                   </div>
                 ) : (
@@ -402,7 +413,13 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
 
             {/* Next / Complete Button */}
             <button className="complete-set-btn" onClick={handleDone}>
-              {currentSet < totalSets ? '✓ SELESAI SET INI' : (isLastExercise ? '🏁 SELESAIKAN LATIHAN' : '✓ SELESAI & LANJUT')}
+              {currentSet < totalSets ? (
+                <><Check size={16} style={{ verticalAlign: 'middle', marginRight: 6 }} /> SELESAI SET INI</>
+              ) : (isLastExercise ? (
+                <><Flag size={16} style={{ verticalAlign: 'middle', marginRight: 6 }} /> SELESAIKAN LATIHAN</>
+              ) : (
+                <><ArrowRight size={16} style={{ verticalAlign: 'middle', marginRight: 6 }} /> SELESAI & LANJUT</>
+              ))}
             </button>
           </div>
         )}

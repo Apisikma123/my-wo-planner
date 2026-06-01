@@ -5,11 +5,11 @@
   position: relative;
   background: var(--bg-primary);
   transition: max-width var(--transition-slow);
-  padding: 0 16px;
+  padding: 0;
 }
 
 .roster-body {
-  padding-bottom: 80px;
+  padding: 0 16px 80px 16px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -38,24 +38,25 @@
 /* Desktop & Tablet Premium Dashboard Layout */
 @media (min-width: 820px) {
   .roster-page {
-    max-width: 1200px;
-    padding: 0 20px;
+    max-width: 1440px;
+    padding: 0 32px;
   }
   
   .roster-body {
     display: grid;
-    grid-template-columns: 360px 1fr;
-    gap: 28px;
-    padding: 20px 0 60px;
+    grid-template-columns: 380px 1fr;
+    gap: 32px;
+    padding: 24px 0 60px;
     align-items: start;
   }
   
   .roster-sidebar {
     position: sticky;
-    top: 20px;
-    max-height: calc(100vh - 40px);
+    top: 24px;
+    max-height: calc(100vh - 48px);
     overflow-y: auto;
-    padding-right: 4px;
+    padding-right: 8px;
+    gap: 20px;
   }
   
   /* Custom scrollbar for sidebar */

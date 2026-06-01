@@ -16,16 +16,14 @@ export default function RosterPage() {
 
   return (
     <div className="roster-page">
-      <Header onSettingsClick={() => setShowDatePicker(!showDatePicker)} />
-
-      {showDatePicker && (
-        <div className="slide-down">
-          <StartDatePicker />
-        </div>
-      )}
-
       <div className="roster-body">
         <div className="roster-sidebar">
+          <Header onSettingsClick={() => setShowDatePicker(!showDatePicker)} />
+          {showDatePicker && (
+            <div className="slide-down">
+              <StartDatePicker />
+            </div>
+          )}
           <TodayBanner />
           <ProgressionBadge />
           <StatsPanel />

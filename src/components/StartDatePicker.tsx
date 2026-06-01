@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useWorkoutEngine } from '../hooks/useWorkoutEngine';
 import { fromIsoString, toIsoString, addDays } from '../utils/dateUtils';
+import { CalendarDays, ChevronLeft, ChevronRight } from 'lucide-react';
 import './StartDatePicker.css';
 
 export default function StartDatePicker() {
@@ -20,13 +21,15 @@ export default function StartDatePicker() {
   
   return (
     <div className="date-picker-container fade-in">
-      <div className="date-picker-label">📅 TENTUKAN TANGGAL MULAI</div>
+      <div className="date-picker-label">
+        <CalendarDays size={13} style={{ verticalAlign: 'middle', marginRight: 4 }} /> TENTUKAN TANGGAL MULAI
+      </div>
       <div className="date-picker-controls">
         <button 
           className="date-shift-btn" 
           onClick={() => shiftDate(-7)}
           title="Mundur 1 Minggu"
-        >◀</button>
+        ><ChevronLeft size={16} /></button>
         
         <input
           type="date"
@@ -39,7 +42,7 @@ export default function StartDatePicker() {
           className="date-shift-btn" 
           onClick={() => shiftDate(7)}
           title="Maju 1 Minggu"
-        >▶</button>
+        ><ChevronRight size={16} /></button>
       </div>
       <div className="date-picker-help">
         *Bisa ketik manual, klik ikon kalender, atau pakai tombol panah.

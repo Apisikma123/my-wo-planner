@@ -26,9 +26,9 @@ export function shouldAutoDeload(fatigue: number): boolean {
 }
 
 export function getFatigueAdjustment(fatigue: number): { volumeMult: number; note: string } {
-  if (fatigue > 85) return { volumeMult: 0.6, note: '⚠️ Fatigue tinggi — auto deload' };
-  if (fatigue > 70) return { volumeMult: 0.85, note: '🟡 Fatigue moderate — volume sedikit dikurangi' };
-  return { volumeMult: 1.0, note: '🟢 Fatigue normal' };
+  if (fatigue > 85) return { volumeMult: 0.6, note: '[!] Fatigue tinggi — auto deload' };
+  if (fatigue > 70) return { volumeMult: 0.85, note: '[~] Fatigue moderate — volume sedikit dikurangi' };
+  return { volumeMult: 1.0, note: '[OK] Fatigue normal' };
 }
 
 export function getFatigueColor(fatigue: number): string {

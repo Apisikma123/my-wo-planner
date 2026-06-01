@@ -1,8 +1,17 @@
 import React from 'react';
 import { useWorkoutEngine } from '../hooks/useWorkoutEngine';
 import { formatFullDate } from '../utils/dateUtils';
-import { TYPE_COLORS, TYPE_ICONS, TYPE_LABELS } from '../utils/constants';
+import { TYPE_COLORS, TYPE_LABELS } from '../utils/constants';
+import { MapPin, Clock, CheckCircle2, Dumbbell, RotateCcw, Footprints, BedDouble, LucideIcon } from 'lucide-react';
 import './TodayBanner.css';
+
+const typeIconMap: Record<string, LucideIcon> = {
+  push: Dumbbell,
+  pull: RotateCcw,
+  legs: Footprints,
+  rest: Footprints,
+  fullrest: BedDouble,
+};
 
 export default function TodayBanner() {
   const { todayWorkout, todayIso, selectDay, roster } = useWorkoutEngine();
@@ -12,6 +21,8 @@ export default function TodayBanner() {
   
   const isBeforeProgram = roster.length > 0 && todayIso < roster[0].isoDate;
   const isAfterProgram = roster.length > 0 && todayIso > roster[roster.length - 1].isoDate;
+
+  const TypeIcon = todayWorkout ? typeIconMap[todayWorkout.workoutType] : null;
   
   return (
     <div
@@ -24,20 +35,23 @@ export default function TodayBanner() {
         boxShadow: todayWorkout ? `0 0 20px ${col}15` : 'none',
       }}
     >
-      <div className="today-label">📍 HARI INI</div>
+      <div className="today-label">
+        <MapPin size={11} style={{ verticalAlign: 'middle', marginRight: 4 }} /> HARI INI
+      </div>
       <div className="today-content">
         <div>
           <div className="today-date">{todayLabel}</div>
           {todayWorkout ? (
             <div className="today-type" style={{ color: col }}>
-              {TYPE_ICONS[todayWorkout.workoutType]} {TYPE_LABELS[todayWorkout.workoutType]}
+              {TypeIcon && <TypeIcon size={18} style={{ verticalAlign: 'middle', marginRight: 6 }} />}
+              {TYPE_LABELS[todayWorkout.workoutType]}
             </div>
           ) : (
             <div className="today-status">
               {isBeforeProgram
-                ? '⏳ Program belum mulai'
+                ? <><Clock size={14} style={{ verticalAlign: 'middle', marginRight: 4 }} /> Program belum mulai</>
                 : isAfterProgram
-                ? '✅ Roster ini sudah selesai — load more!'
+                ? <><CheckCircle2 size={14} style={{ verticalAlign: 'middle', marginRight: 4 }} /> Roster ini sudah selesai — load more!</>
                 : '—'}
             </div>
           )}

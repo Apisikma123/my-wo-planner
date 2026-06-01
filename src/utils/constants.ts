@@ -9,7 +9,7 @@ export const TYPE_COLORS: Record<WorkoutType, string> = {
 };
 
 export const TYPE_ICONS: Record<WorkoutType, string> = {
-  push: '💪', pull: '🔙', legs: '🦵', rest: '🚶', fullrest: '😴',
+  push: 'PUSH', pull: 'PULL', legs: 'LEGS', rest: 'REST', fullrest: 'FULL REST',
 };
 
 export const TYPE_LABELS: Record<WorkoutType, string> = {
@@ -53,16 +53,16 @@ export function getDailyChecklist(isoDate?: string, workoutType?: string) {
     const dayOfMonth = date.getDate();
     const isEven = dayOfMonth % 2 === 0;
     const morningExercise = isEven
-      ? { icon: '🏃⚡', label: 'Sprint di Tempat', value: '30 dtk × 5-6 set (Pagi)', color: '#fbbf24' }
-      : { icon: '🦵⚡', label: 'Squat Jump', value: '3 set × 10-12 rep (Pagi)', color: '#fbbf24' };
+      ? { icon: 'Zap', label: 'Sprint di Tempat', value: '30 dtk × 5-6 set (Pagi)', color: '#fbbf24' }
+      : { icon: 'Activity', label: 'Squat Jump', value: '3 set × 10-12 rep (Pagi)', color: '#fbbf24' };
     checklist.push(morningExercise);
   }
 
   checklist.push(
-    { icon: '🪝', label: 'Dead Hang', value: '3 × 30–60 dtk', color: '#00d4ff' },
-    { icon: '😴', label: 'Tidur 8–9 Jam', value: 'Jam 22.00–23.00', color: '#a855f7' },
-    { icon: '💧', label: 'Air Putih', value: 'Min. 2.5L/hari', color: '#22c55e' },
-    { icon: '🥩', label: 'Protein', value: '98–134g/hari', color: '#ff6b35' }
+    { icon: 'Anchor', label: 'Dead Hang', value: '3 × 30–60 dtk', color: '#00d4ff' },
+    { icon: 'Moon', label: 'Tidur 8–9 Jam', value: 'Jam 22.00–23.00', color: '#a855f7' },
+    { icon: 'Droplets', label: 'Air Putih', value: 'Min. 2.5L/hari', color: '#22c55e' },
+    { icon: 'Beef', label: 'Protein', value: '98–134g/hari', color: '#ff6b35' }
   );
 
   return checklist;

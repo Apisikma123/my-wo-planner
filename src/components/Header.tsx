@@ -2,14 +2,15 @@ import { useMemo } from 'react';
 import { useWorkoutEngine } from '../hooks/useWorkoutEngine';
 import { getMonthShortId } from '../utils/dateUtils';
 import { TYPE_COLORS } from '../utils/constants';
+import { Settings, Dumbbell, RotateCcw, Footprints, BedDouble, TrendingUp } from 'lucide-react';
 import './Header.css';
 
 const legendItems = [
-  { color: TYPE_COLORS.push, label: '💪 PUSH' },
-  { color: TYPE_COLORS.pull, label: '🔙 PULL' },
-  { color: TYPE_COLORS.legs, label: '🦵 LEGS' },
-  { color: TYPE_COLORS.rest, label: '🚶 REST' },
-  { color: '#334155', label: '😴 FULL REST' },
+  { color: TYPE_COLORS.push, label: 'PUSH', Icon: Dumbbell },
+  { color: TYPE_COLORS.pull, label: 'PULL', Icon: RotateCcw },
+  { color: TYPE_COLORS.legs, label: 'LEGS', Icon: Footprints },
+  { color: TYPE_COLORS.rest, label: 'REST', Icon: Footprints },
+  { color: '#334155', label: 'FULL REST', Icon: BedDouble },
 ];
 
 interface HeaderProps {
@@ -42,16 +43,18 @@ export default function Header({ onSettingsClick }: HeaderProps) {
           <div className="header-label">PROGRAM PPL + HGH BOOST</div>
           {onSettingsClick && (
             <button className="header-settings-btn" onClick={onSettingsClick} aria-label="Settings">
-              ⚙️
+              <Settings size={16} />
             </button>
           )}
         </div>
         <div className="header-title">SMART ROSTER</div>
-        <div className="header-subtitle">{dateRange} · GROW MODE 🔝</div>
+        <div className="header-subtitle">
+          {dateRange} · GROW MODE <TrendingUp size={12} style={{ verticalAlign: 'middle', marginLeft: 2 }} />
+        </div>
         <div className="header-legend">
           {legendItems.map(item => (
             <div key={item.label} className="legend-item" style={{ borderColor: `${item.color}40` }}>
-              <div className="legend-dot" style={{ background: item.color }} />
+              <item.Icon size={10} style={{ color: item.color }} />
               <span style={{ color: item.color }}>{item.label}</span>
             </div>
           ))}

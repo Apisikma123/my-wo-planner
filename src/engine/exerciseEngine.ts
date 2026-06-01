@@ -205,16 +205,16 @@ const legsTemplates: ExerciseTemplate[] = [
 
 const restExercises: Exercise[] = [
 
-  { id: 'rest-3', name: '🧘 Stretching Ringan', detail: '10 mnt — cat-cow, child\'s pose, forward fold, hip flexor', sets: 1, reps: '10 mnt', intensity: 20, category: 'mobility', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
-  { id: 'rest-4', name: '😴 Tidur 8–9 Jam', detail: 'Tidur jam 22.00–23.00 · HGH 80% diproduksi saat tidur dalam', sets: 1, reps: '8-9 jam', intensity: 0, category: 'recovery', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
-  { id: 'rest-5', name: '🥗 Nutrisi', detail: 'Protein 98–134g · hindari gula 2 jam sebelum tidur · minum 2.5L air', sets: 1, reps: '-', intensity: 0, category: 'recovery', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
+  { id: 'rest-3', name: 'Stretching Ringan', detail: '10 mnt — cat-cow, child\'s pose, forward fold, hip flexor', sets: 1, reps: '10 mnt', intensity: 20, category: 'mobility', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
+  { id: 'rest-4', name: 'Tidur 8–9 Jam', detail: 'Tidur jam 22.00–23.00 · HGH 80% diproduksi saat tidur dalam', sets: 1, reps: '8-9 jam', intensity: 0, category: 'recovery', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
+  { id: 'rest-5', name: 'Nutrisi', detail: 'Protein 98–134g · hindari gula 2 jam sebelum tidur · minum 2.5L air', sets: 1, reps: '-', intensity: 0, category: 'recovery', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
 ];
 
 const fullRestExercises: Exercise[] = [
-  { id: 'frest-1', name: '😴 Full Total Rest', detail: 'Tidak ada aktivitas fisik sama sekali — biarkan otot & tulang recover penuh', sets: 0, reps: '-', intensity: 0, category: 'recovery', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
-  { id: 'frest-2', name: '😴 Tidur 8–9 Jam', detail: 'Tidur jam 22.00–23.00 · HGH paling tinggi saat tidur dalam malam ini', sets: 1, reps: '8-9 jam', intensity: 0, category: 'recovery', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
-  { id: 'frest-3', name: '🥗 Nutrisi', detail: 'Makan cukup protein · hindari gula sebelum tidur · minum 2.5L air', sets: 1, reps: '-', intensity: 0, category: 'recovery', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
-  { id: 'frest-4', name: '📵 Hindari Layar', detail: 'HP jauh 30 mnt sebelum tidur · tidur gelap total = HGH maksimal', sets: 1, reps: '-', intensity: 0, category: 'recovery', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
+  { id: 'frest-1', name: 'Full Total Rest', detail: 'Tidak ada aktivitas fisik sama sekali — biarkan otot & tulang recover penuh', sets: 0, reps: '-', intensity: 0, category: 'recovery', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
+  { id: 'frest-2', name: 'Tidur 8–9 Jam', detail: 'Tidur jam 22.00–23.00 · HGH paling tinggi saat tidur dalam malam ini', sets: 1, reps: '8-9 jam', intensity: 0, category: 'recovery', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
+  { id: 'frest-3', name: 'Nutrisi', detail: 'Makan cukup protein · hindari gula sebelum tidur · minum 2.5L air', sets: 1, reps: '-', intensity: 0, category: 'recovery', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
+  { id: 'frest-4', name: 'Hindari Layar', detail: 'HP jauh 30 mnt sebelum tidur · tidur gelap total = HGH maksimal', sets: 1, reps: '-', intensity: 0, category: 'recovery', recoveryCost: 0, isHgh: false, isHang: false, isDurability: false },
 ];
 
 const templateMap: Record<string, ExerciseTemplate[]> = {

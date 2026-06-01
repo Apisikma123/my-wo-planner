@@ -1,5 +1,6 @@
 import { Exercise } from '../types';
 import { getHghColor, getHghLabel } from '../engine/hghEngine';
+import { Zap, Anchor, Flame, Dumbbell, Dna } from 'lucide-react';
 import './HghScoreCard.css';
 
 interface HghScoreCardProps {
@@ -18,17 +19,17 @@ export default function HghScoreCard({ score, exercises }: HghScoreCardProps) {
   const hasCompound = exercises.some(e => e.category === 'compound');
 
   const factors = [
-    { icon: '⚡', name: 'Sprint/Jump Pagi', active: hasSprint, points: 25 },
-    { icon: '🪝', name: 'Dead Hang', active: hasHang, points: 15 },
-    { icon: '🔥', name: 'Hi-Tempo Durab', active: hasHiTempo, points: 15 },
-    { icon: '🏋️', name: 'Compound', active: hasCompound, points: 20 },
+    { Icon: Zap, name: 'Sprint/Jump Pagi', active: hasSprint, points: 25 },
+    { Icon: Anchor, name: 'Dead Hang', active: hasHang, points: 15 },
+    { Icon: Flame, name: 'Hi-Tempo Durab', active: hasHiTempo, points: 15 },
+    { Icon: Dumbbell, name: 'Compound', active: hasCompound, points: 20 },
   ];
 
   return (
     <div className="hgh-card" style={{ borderColor: `${color}25` }}>
       <div className="hgh-header">
         <div className="hgh-title">
-          <span className="hgh-icon">🧬</span>
+          <span className="hgh-icon"><Dna size={16} /></span>
           <span>HGH SCORE</span>
         </div>
         <div className="hgh-score" style={{ color }}>
@@ -58,7 +59,7 @@ export default function HghScoreCard({ score, exercises }: HghScoreCardProps) {
             key={f.name}
             className={`hgh-factor ${f.active ? 'active' : ''}`}
           >
-            <span className="hgh-factor-icon">{f.icon}</span>
+            <span className="hgh-factor-icon"><f.Icon size={14} /></span>
             <span className="hgh-factor-name">{f.name}</span>
             <span className="hgh-factor-pts" style={{ color: f.active ? '#22c55e' : 'var(--text-dim)' }}>
               {f.active ? `+${f.points}` : '—'}

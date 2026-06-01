@@ -1,7 +1,16 @@
 import React, { memo, useCallback } from 'react';
 import { WorkoutDay } from '../types';
-import { TYPE_COLORS, TYPE_ICONS } from '../utils/constants';
+import { TYPE_COLORS } from '../utils/constants';
+import { Dumbbell, RotateCcw, Footprints, BedDouble, Minus, Check, LucideIcon } from 'lucide-react';
 import './DayCard.css';
+
+const typeIconMap: Record<string, LucideIcon> = {
+  push: Dumbbell,
+  pull: RotateCcw,
+  legs: Footprints,
+  rest: Footprints,
+  fullrest: BedDouble,
+};
 
 interface DayCardProps {
   day: WorkoutDay;
@@ -21,13 +30,14 @@ const DayCard = memo(function DayCard({ day, isSelected, isToday, isPast, onSele
   }, [isSelected, day.id, onSelect]);
   
   const datePart = day.displayDate.split(' ')[1] || day.displayDate;
+  const TypeIcon = typeIconMap[day.workoutType];
   
   if (day.isBeforeStart) {
     return (
       <div className="day-card empty" style={{ opacity: 0.2, pointerEvents: 'none' }}>
         <div className="day-name" style={{ color: 'var(--text-muted)' }}>{day.displayDate.split(' ')[0]}</div>
         <div className="day-date" style={{ color: 'var(--text-muted)' }}>{datePart}</div>
-        <div className="day-icon" style={{ fontSize: '12px', marginTop: '4px' }}>➖</div>
+        <div className="day-icon" style={{ marginTop: '4px' }}><Minus size={12} style={{ color: 'var(--text-muted)' }} /></div>
       </div>
     );
   }
@@ -43,8 +53,10 @@ const DayCard = memo(function DayCard({ day, isSelected, isToday, isPast, onSele
       } as React.CSSProperties}
     >
       {isToday && <div className="today-indicator" style={{ background: col, boxShadow: `0 0 6px ${col}` }} />}
-      {isCompleted && <div className="completed-check">✓</div>}
-      <div className="day-icon">{TYPE_ICONS[day.workoutType]}</div>
+      {isCompleted && <div className="completed-check"><Check size={10} strokeWidth={3} /></div>}
+      <div className="day-icon">
+        {TypeIcon && <TypeIcon size={16} style={{ color: isSelected || isToday ? col : `${col}99` }} />}
+      </div>
       <div className="day-name" style={{ color: isSelected || isToday ? col : `${col}99` }}>
         {day.displayDate.split(' ')[0]}
       </div>
