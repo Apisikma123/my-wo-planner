@@ -1,0 +1,64 @@
+.roster-page {
+  min-height: 100vh;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  background: var(--bg-primary);
+  transition: max-width var(--transition-slow);
+  padding: 0 16px;
+}
+
+.roster-body {
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.roster-sidebar, .roster-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@keyframes slideDownIn {
+  from { opacity: 0; transform: translateY(-12px); max-height: 0; }
+  to { opacity: 1; transform: translateY(0); max-height: 300px; }
+}
+
+.slide-down {
+  animation: slideDownIn 0.3s ease forwards;
+  overflow: hidden;
+}
+
+/* Desktop & Tablet Premium Dashboard Layout */
+@media (min-width: 820px) {
+  .roster-page {
+    max-width: 1200px;
+    padding: 0 20px;
+  }
+  
+  .roster-body {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 28px;
+    padding: 20px 0 60px;
+    align-items: start;
+  }
+  
+  .roster-sidebar {
+    position: sticky;
+    top: 20px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  
+  /* Custom scrollbar for sidebar */
+  .roster-sidebar::-webkit-scrollbar {
+    width: 3px;
+  }
+  .roster-sidebar::-webkit-scrollbar-thumb {
+    background: var(--border-subtle);
+  }
+}

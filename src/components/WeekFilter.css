@@ -1,0 +1,41 @@
+.week-filter {
+  display: flex;
+  gap: 5px;
+  padding: 10px 10px 8px;
+  overflow-x: auto;
+  background: var(--bg-primary);
+  scrollbar-width: none;
+}
+
+.week-filter::-webkit-scrollbar {
+  display: none;
+}
+
+.week-btn {
+  background: var(--bg-card);
+  color: var(--text-muted);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 5px 13px;
+  font-size: 9px;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  font-weight: 600;
+}
+
+.week-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+}
+
+.week-btn.active {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+.week-btn.more {
+  color: var(--color-accent);
+  border-style: dashed;
+}

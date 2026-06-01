@@ -1,0 +1,121 @@
+.header {
+  background: linear-gradient(135deg, #0d1526 0%, #1a1040 50%, #0d1526 100%);
+  border-bottom: 1px solid var(--border-medium);
+  padding: 22px 16px 18px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% -10%, rgba(59, 130, 246, 0.09) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.header-scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.4), transparent);
+  animation: headerScan 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes headerScan {
+  0%, 100% { top: 0; opacity: 0; }
+  50% { top: 100%; opacity: 1; }
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.header-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.header-label {
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: var(--color-hgh);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.header-settings-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  line-height: 1;
+}
+
+.header-settings-btn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  transform: translateY(-50%) scale(1.1) rotate(90deg);
+}
+
+.header-title {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, #f1f5f9, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-subtitle {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  letter-spacing: 2px;
+}
+
+.header-legend {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-card);
+  border: 1px solid;
+  border-radius: var(--radius-full);
+  padding: 3px 10px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  transition: transform var(--transition-fast);
+}
+
+.legend-item:hover {
+  transform: scale(1.05);
+}
+
+.legend-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}

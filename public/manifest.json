@@ -1,0 +1,18 @@
+{
+  "short_name": "My WO",
+  "name": "My WO Planner",
+  "description": "Smart workout roster with auto-progression, fatigue management, and HGH optimization.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#030810",
+  "theme_color": "#030810",
+  "display": "standalone",
+  "orientation": "portrait"
+}

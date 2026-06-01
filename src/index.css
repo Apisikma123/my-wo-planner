@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Base Backgrounds */
+  --bg-primary: #030810;
+  --bg-secondary: #050c18;
+  --bg-card: #0a1422;
+  --bg-elevated: #0f1e30;
+  --bg-hover: #132640;
+  
+  /* Workout Colors */
+  --color-push: #ff6b35;
+  --color-pull: #a855f7;
+  --color-legs: #22c55e;
+  --color-rest: #1e4d6b;
+  --color-fullrest: #1a1a2e;
+  
+  /* Phase Colors */
+  --color-adaptation: #00d4ff;
+  --color-overload: #00ff9f;
+  --color-peak: #fbbf24;
+  --color-deload: #f472b6;
+  
+  /* Accent */
+  --color-accent: #3b82f6;
+  --color-hgh: #60a5fa;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  
+  /* Text */
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+  --text-dim: #2d4a6a;
+  
+  /* Borders */
+  --border-subtle: #0f2040;
+  --border-medium: #1a3050;
+  --border-bright: #2a4070;
+  
+  /* Fonts */
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --font-sans: 'Poppins', system-ui, -apple-system, sans-serif;
+  
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  color: inherit;
+}
+
+input {
+  font-family: inherit;
+  outline: none;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-bright);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px currentColor; }
+  50% { box-shadow: 0 0 15px currentColor, 0 0 30px currentColor; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.4s ease forwards;
+}
+
+.scale-in {
+  animation: scaleIn 0.25s ease forwards;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(10, 20, 34, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(30, 48, 80, 0.5);
+}
+
+/* Glow effects */
+.glow-push { box-shadow: 0 0 16px rgba(255, 107, 53, 0.15); }
+.glow-pull { box-shadow: 0 0 16px rgba(168, 85, 247, 0.15); }
+.glow-legs { box-shadow: 0 0 16px rgba(34, 197, 94, 0.15); }
+.glow-accent { box-shadow: 0 0 16px rgba(59, 130, 246, 0.15); }
+
+/* Today indicator pulse */
+.today-dot {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Layout utilities */
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  :root {
+    --space-md: 10px;
+  }
+}

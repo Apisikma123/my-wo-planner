@@ -1,0 +1,69 @@
+.calendar-container {
+  padding: 4px 10px 8px;
+}
+
+.week-group {
+  margin-bottom: 14px;
+}
+
+.week-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  padding: 0 2px;
+}
+
+.week-badge {
+  font-size: 8px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border: 1px solid;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.week-line {
+  flex: 1;
+  height: 1px;
+}
+
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+@media (min-width: 480px) {
+  .week-grid {
+    gap: 8px;
+  }
+}
+
+@media (min-width: 820px) {
+  .week-grid {
+    gap: 12px;
+  }
+}
+
+.load-more-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  background: var(--bg-card);
+  border: 1px dashed var(--border-medium);
+  border-radius: var(--radius-md);
+  color: var(--color-accent);
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+}
+
+.load-more-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+}

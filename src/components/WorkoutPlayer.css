@@ -1,0 +1,554 @@
+.workout-player-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(8, 12, 20, 0.95);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.workout-player-card {
+  width: 100%;
+  max-width: 540px;
+  background: linear-gradient(185deg, #131a26, #090d14);
+  border: 1px solid rgba(204, 255, 0, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(204, 255, 0, 0.05);
+  border-radius: 24px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  max-height: 800px;
+}
+
+.player-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 14px;
+}
+
+.player-back {
+  background: none;
+  border: none;
+  color: var(--text-dim, #94a3b8);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.player-back:hover {
+  color: #ff3e3e;
+}
+
+.player-progress {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.player-phase-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid;
+}
+
+.player-phase-tag.adaptation { border-color: #00d4ff; color: #00d4ff; background: rgba(0, 212, 255, 0.1); }
+.player-phase-tag.overload { border-color: #00ff9f; color: #00ff9f; background: rgba(0, 255, 159, 0.1); }
+.player-phase-tag.peak { border-color: #fbbf24; color: #fbbf24; background: rgba(251, 191, 36, 0.1); }
+.player-phase-tag.deload { border-color: #f472b6; color: #f472b6; background: rgba(244, 114, 182, 0.1); }
+
+/* ACTIVE SCREEN styling */
+.player-active-screen, .player-rest-screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.exercise-media-placeholder {
+  height: 180px;
+  background: linear-gradient(135deg, rgba(204, 255, 0, 0.08), rgba(0, 0, 0, 0.5));
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 20px;
+}
+
+.media-icon {
+  font-size: 72px;
+  z-index: 2;
+  filter: drop-shadow(0 0 15px rgba(204, 255, 0, 0.4));
+  animation: float 3s ease-in-out infinite;
+}
+
+.media-glow {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(204, 255, 0, 0.25) 0%, rgba(204, 255, 0, 0) 70%);
+  filter: blur(20px);
+}
+
+.exercise-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.exercise-category {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ccff00;
+  letter-spacing: 1.5px;
+}
+
+.exercise-name {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  margin: 6px 0 8px 0;
+  text-transform: uppercase;
+}
+
+.exercise-detail {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.exercise-tracker-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: auto;
+}
+
+.tracker-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.tracker-set {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.tracker-intensity {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 10px;
+  border: 1px solid;
+}
+
+.tracker-set .highlight, .tracker-intensity .highlight {
+  font-weight: 800;
+}
+
+.tracker-action-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.rep-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rep-count {
+  font-size: 52px;
+  font-weight: 900;
+  color: #ccff00;
+  line-height: 1;
+}
+
+.rep-label {
+  font-size: 12px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+.timer-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.timer-numbers {
+  font-size: 56px;
+  font-weight: 900;
+  color: #ff3e3e;
+  font-family: monospace;
+  letter-spacing: -2px;
+}
+
+.timer-control-btn {
+  background: rgba(255, 62, 62, 0.15);
+  border: 1px solid rgba(255, 62, 62, 0.4);
+  color: #ff3e3e;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: all 0.2s;
+}
+
+.timer-control-btn.paused {
+  background: rgba(204, 255, 0, 0.15);
+  border-color: rgba(204, 255, 0, 0.4);
+  color: #ccff00;
+}
+
+.complete-set-btn {
+  background: #ccff00;
+  border: none;
+  color: #000;
+  padding: 16px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.2s;
+  box-shadow: 0 6px 20px rgba(204, 255, 0, 0.3);
+}
+
+.complete-set-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(204, 255, 0, 0.45);
+}
+
+/* REST SCREEN styling */
+.player-rest-screen {
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  position: relative;
+}
+
+.rest-header {
+  margin-top: 10px;
+}
+
+.rest-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: #fbbf24;
+  letter-spacing: 2px;
+}
+
+.next-exercise-label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 6px;
+}
+
+.breathing-circle-container {
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 30px 0;
+}
+
+.breathing-circle-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(251, 191, 36, 0.08);
+  animation: breathingPulse 4s ease-in-out infinite;
+}
+
+.breathing-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #1a150a 0%, #000 100%);
+  border: 4px solid #fbbf24;
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  animation: breathingSize 4s ease-in-out infinite;
+}
+
+.timer-seconds {
+  font-size: 48px;
+  font-weight: 900;
+  color: #fbbf24;
+  line-height: 1;
+}
+
+.timer-label {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.breathing-guide-text {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  padding: 8px 20px;
+  margin-bottom: 20px;
+}
+
+.breath-instruction {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+.rest-tip-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  gap: 14px;
+  width: 100%;
+}
+
+.tip-icon {
+  font-size: 24px;
+}
+
+.tip-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: #fbbf24;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.tip-desc {
+  font-size: 13px;
+  color: #cbd5e1;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.skip-rest-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 20px;
+}
+
+.skip-rest-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* FINISHED SCREEN styling */
+.finished-card {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  height: auto;
+}
+
+.trophy-icon {
+  font-size: 80px;
+  animation: celebrate 1s ease infinite alternate;
+}
+
+.finished-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #ccff00;
+  margin: 20px 0 10px 0;
+}
+
+.finished-subtitle {
+  font-size: 15px;
+  color: #94a3b8;
+  max-width: 360px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.finished-stats {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.finished-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-num {
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.stat-lbl {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.finished-close-btn {
+  background: #ccff00;
+  border: none;
+  color: #000;
+  padding: 16px 40px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 6px 20px rgba(204, 255, 0, 0.3);
+}
+
+.finished-close-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(204, 255, 0, 0.45);
+}
+
+/* KEYFRAME ANIMATIONS */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes breathingPulse {
+  0%, 100% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.3); opacity: 0.4; }
+}
+
+@keyframes breathingSize {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes celebrate {
+  0% { transform: scale(1) rotate(-5deg); }
+  100% { transform: scale(1.1) rotate(5deg); }
+}
+
+@media (max-width: 640px) {
+  .workout-player-overlay {
+    padding: 0;
+  }
+
+  .workout-player-card {
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    border: none;
+    padding: 16px;
+  }
+
+  .exercise-name {
+    font-size: 20px;
+  }
+
+  .exercise-media-placeholder {
+    height: 140px;
+    margin-bottom: 12px;
+  }
+
+  .media-icon {
+    font-size: 54px;
+  }
+
+  .rep-count {
+    font-size: 40px;
+  }
+
+  .timer-numbers {
+    font-size: 44px;
+  }
+
+  .complete-set-btn {
+    padding: 14px;
+    font-size: 15px;
+    margin-top: 10px;
+  }
+
+  .breathing-circle-container {
+    width: 150px;
+    height: 150px;
+    margin: 15px 0;
+  }
+
+  .breathing-circle {
+    width: 110px;
+    height: 110px;
+  }
+
+  .timer-seconds {
+    font-size: 36px;
+  }
+
+  .rest-tip-card {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .tip-desc {
+    font-size: 12px;
+  }
+
+  .finished-card {
+    padding: 20px;
+  }
+
+  .finished-title {
+    font-size: 24px;
+  }
+}
+
