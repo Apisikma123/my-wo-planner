@@ -16,6 +16,12 @@ export function useWorkoutEngine() {
   
   const visibleDays = useMemo(() => {
     if (state.activeFilter === 'all') return state.roster;
+    if (state.activeFilter.startsWith('month-')) {
+      const monthNum = parseInt(state.activeFilter.replace('month-', ''), 10);
+      const startWeek = (monthNum - 1) * 4 + 1;
+      const endWeek = monthNum * 4;
+      return state.roster.filter(d => d.weekIndex >= startWeek && d.weekIndex <= endWeek);
+    }
     const weekNum = parseInt(state.activeFilter);
     return state.roster.filter(d => d.weekIndex === weekNum);
   }, [state.roster, state.activeFilter]);

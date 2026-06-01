@@ -1,27 +1,37 @@
 .day-card {
   border: 1px solid;
   border-radius: 12px;
-  padding: 10px 4px;
+  padding: 10px 4px 8px;
   text-align: center;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-height: 76px;
+  justify-content: center;
+}
+
+.day-card:active {
+  transform: scale(0.96);
 }
 
 .day-card:hover {
-  transform: translateY(-4px) scale(1.04);
+  transform: translateY(-3px) scale(1.03);
   filter: brightness(1.15);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px var(--day-color);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 12px var(--day-color);
 }
 
 .day-card.selected {
-  transform: scale(1.02);
-  box-shadow: 0 0 18px var(--day-color);
+  transform: scale(1.04);
+  box-shadow: 0 0 16px var(--day-color);
 }
 
 .day-card.past:not(.selected) {
-  opacity: 0.45;
+  opacity: 0.4;
 }
 
 .today-indicator {
@@ -36,10 +46,10 @@
 
 .completed-check {
   position: absolute;
-  top: -4px;
-  left: -4px;
-  width: 16px;
-  height: 16px;
+  top: -5px;
+  left: -5px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: var(--color-success);
   color: #fff;
@@ -49,11 +59,12 @@
   justify-content: center;
   font-weight: 900;
   box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+  border: 1.5px solid rgba(3, 8, 16, 0.8);
 }
 
 .day-icon {
-  font-size: 16px;
-  margin-bottom: 4px;
+  font-size: 18px;
+  line-height: 1;
   transition: transform 0.2s ease;
 }
 
@@ -66,59 +77,82 @@
   letter-spacing: 0.5px;
   font-weight: 800;
   text-transform: uppercase;
+  line-height: 1;
 }
 
 .day-date {
-  font-size: 8px;
+  font-size: 9px;
   color: var(--text-secondary);
-  opacity: 0.7;
-  margin-top: 2px;
-  font-weight: 500;
+  margin-top: 1px;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .day-dot {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  margin: 6px auto 0;
+  margin-top: 2px;
+}
+
+/* Mobile optimised - slightly larger tap targets */
+@media (max-width: 480px) {
+  .day-card {
+    min-height: 72px;
+    padding: 8px 3px 6px;
+  }
+  .day-icon {
+    font-size: 16px;
+  }
+  .day-name {
+    font-size: 8px;
+  }
+  .day-date {
+    font-size: 8px;
+  }
 }
 
 @media (min-width: 480px) {
   .day-card {
-    padding: 14px 6px;
+    padding: 12px 6px 10px;
+    min-height: 88px;
+    border-radius: 14px;
   }
   .day-icon {
-    font-size: 20px;
-    margin-bottom: 6px;
+    font-size: 22px;
   }
   .day-name {
-    font-size: 11px;
-    letter-spacing: 1px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
   }
   .day-date {
     font-size: 10px;
-    margin-top: 4px;
+    margin-top: 2px;
   }
   .day-dot {
     width: 5px;
     height: 5px;
-    margin-top: 8px;
   }
 }
 
 @media (min-width: 820px) {
   .day-card {
-    padding: 18px 8px;
+    padding: 18px 8px 14px;
     border-radius: 14px;
+    min-height: 100px;
   }
   .day-icon {
-    font-size: 24px;
+    font-size: 26px;
   }
   .day-name {
     font-size: 12px;
   }
   .day-date {
     font-size: 11px;
+    margin-top: 3px;
+  }
+  .day-dot {
+    width: 6px;
+    height: 6px;
   }
 }
-

@@ -29,7 +29,7 @@ const getInitialState = (): WorkoutState => {
     visibleWeeks: DEFAULT_VISIBLE_WEEKS,
     completedDays: [],
     selectedDayId: null,
-    activeFilter: 'all',
+    activeFilter: 'month-1',
     streak: 0,
   };
 };

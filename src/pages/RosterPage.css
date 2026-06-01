@@ -9,16 +9,20 @@
 }
 
 .roster-body {
-  padding-bottom: 60px;
+  padding-bottom: 80px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .roster-sidebar, .roster-main {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.roster-main {
+  padding-top: 4px;
 }
 
 @keyframes slideDownIn {
