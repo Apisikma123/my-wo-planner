@@ -704,3 +704,35 @@
   0%, 100% { opacity: 1; }
   50% { opacity: 0.85; }
 }
+
+@media (max-width: 400px) {
+  .detail-metrics-grid {
+    gap: 4px;
+    padding: 0 10px;
+  }
+  
+  .metric-item {
+    padding: 10px 4px;
+  }
+  
+  .center-start-btn {
+    padding: 12px 12px;
+    gap: 10px;
+  }
+  
+  .detail-hero-meta {
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 10px;
+  }
+  
+  .btn-main-txt {
+    font-size: 11px;
+  }
+  
+  .center-start-btn .play-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+}

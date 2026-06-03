@@ -19,6 +19,12 @@ export default function StartDatePicker() {
     setStartDate(toIsoString(newDate));
   }, [startDate, setStartDate]);
   
+  const displayDate = fromIsoString(startDate).toLocaleDateString('id-ID', { 
+    day: 'numeric', 
+    month: 'long', 
+    year: 'numeric' 
+  });
+  
   return (
     <div className="date-picker-container fade-in">
       <div className="date-picker-label">
@@ -31,12 +37,17 @@ export default function StartDatePicker() {
           title="Mundur 1 Minggu"
         ><ChevronLeft size={16} /></button>
         
-        <input
-          type="date"
-          value={startDate}
-          onChange={handleChange}
-          className="date-picker-native-input"
-        />
+        <div className="date-picker-custom-wrapper">
+          <div className="date-picker-display">
+            {displayDate}
+          </div>
+          <input
+            type="date"
+            value={startDate}
+            onChange={handleChange}
+            className="date-picker-native-input hidden-input"
+          />
+        </div>
         
         <button 
           className="date-shift-btn" 
@@ -45,8 +56,9 @@ export default function StartDatePicker() {
         ><ChevronRight size={16} /></button>
       </div>
       <div className="date-picker-help">
-        *Bisa ketik manual, klik ikon kalender, atau pakai tombol panah.
+        *Bisa klik teks tanggal untuk memilih dari kalender, atau pakai tombol panah.
       </div>
     </div>
   );
 }
+

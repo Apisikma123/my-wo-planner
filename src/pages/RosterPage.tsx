@@ -12,18 +12,13 @@ import './RosterPage.css';
 
 export default function RosterPage() {
   const { selectedDay, selectDay } = useWorkoutEngine();
-  const [showDatePicker, setShowDatePicker] = useState(false);
 
   return (
     <div className="roster-page">
       <div className="roster-body">
         <div className="roster-sidebar">
-          <Header onSettingsClick={() => setShowDatePicker(!showDatePicker)} />
-          {showDatePicker && (
-            <div className="slide-down">
-              <StartDatePicker />
-            </div>
-          )}
+          <Header />
+          <StartDatePicker />
           <TodayBanner />
           <ProgressionBadge />
           <StatsPanel />

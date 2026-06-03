@@ -110,3 +110,24 @@
   letter-spacing: 0.5px;
   font-weight: 500;
 }
+
+@media (max-width: 400px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .stats-panel {
+    padding: 16px;
+  }
+  
+  .stat-card {
+    padding: 12px 8px;
+  }
+  
+  .stats-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

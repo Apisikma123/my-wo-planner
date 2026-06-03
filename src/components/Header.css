@@ -133,3 +133,23 @@
   height: 5px;
   border-radius: 50%;
 }
+
+@media (max-width: 400px) {
+  .header {
+    margin: 0 -12px;
+    padding: 20px 16px 16px;
+  }
+  
+  .header-title {
+    font-size: 20px;
+  }
+  
+  .header-subtitle {
+    font-size: 9px;
+  }
+  
+  .legend-item {
+    font-size: 9px;
+    padding: 2px 0;
+  }
+}

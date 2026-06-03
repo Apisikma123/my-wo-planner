@@ -41,11 +41,6 @@ export default function Header({ onSettingsClick }: HeaderProps) {
       <div className="header-content">
         <div className="header-top-row">
           <div className="header-label">PROGRAM PPL + HGH BOOST</div>
-          {onSettingsClick && (
-            <button className="header-settings-btn" onClick={onSettingsClick} aria-label="Settings">
-              <Settings size={16} />
-            </button>
-          )}
         </div>
         <div className="header-title">SMART ROSTER</div>
         <div className="header-subtitle">
