@@ -1,64 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  /* Base Backgrounds */
-  --bg-primary: #030810;
-  --bg-secondary: #050c18;
-  --bg-card: #0a1422;
-  --bg-elevated: #0f1e30;
-  --bg-hover: #132640;
-  
-  /* Workout Colors */
-  --color-push: #ff6b35;
-  --color-pull: #a855f7;
-  --color-legs: #22c55e;
-  --color-rest: #1e4d6b;
-  --color-fullrest: #1a1a2e;
-  
-  /* Phase Colors */
-  --color-adaptation: #00d4ff;
-  --color-overload: #00ff9f;
-  --color-peak: #fbbf24;
-  --color-deload: #f472b6;
-  
-  /* Accent */
-  --color-accent: #3b82f6;
-  --color-hgh: #60a5fa;
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-danger: #ef4444;
-  
-  /* Text */
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #475569;
-  --text-dim: #2d4a6a;
-  
-  /* Borders */
-  --border-subtle: #0f2040;
-  --border-medium: #1a3050;
-  --border-bright: #2a4070;
-  
-  /* Fonts */
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
-  --font-sans: 'Poppins', system-ui, -apple-system, sans-serif;
-  
-  /* Spacing */
+  /* ── Dark Gym Background ── */
+  --bg-primary: #060a10;
+  --bg-secondary: rgba(14, 18, 28, 0.55);
+  --bg-card: rgba(16, 20, 32, 0.5);
+  --bg-elevated: rgba(22, 28, 42, 0.6);
+  --bg-hover: rgba(255, 255, 255, 0.08);
+
+  /* ── Glass Tokens ── */
+  --glass-bg: rgba(12, 16, 26, 0.55);
+  --glass-bg-strong: rgba(10, 14, 24, 0.7);
+  --glass-blur: 20px;
+  --glass-blur-strong: 28px;
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-bright: rgba(255, 255, 255, 0.22);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --glass-shadow-elevated: 0 12px 48px rgba(0, 0, 0, 0.5);
+  --glass-glow: 0 0 1px rgba(255, 255, 255, 0.08);
+
+  /* ── Workout Colors — vivid & saturated ── */
+  --color-push: #ff7b4f;
+  --color-pull: #b78aff;
+  --color-legs: #4ce68a;
+  --color-rest: #5c7a96;
+  --color-fullrest: rgba(30, 34, 44, 0.5);
+
+  /* ── Phase Colors — high visibility ── */
+  --color-adaptation: #50d8ff;
+  --color-overload: #4ef592;
+  --color-peak: #ffd044;
+  --color-deload: #f794c0;
+
+  /* ── Accent ── */
+  --color-accent: #7cb4ff;
+  --color-hgh: #8fc2ff;
+  --color-success: #4ef592;
+  --color-warning: #ffd044;
+  --color-danger: #ff6b6b;
+
+  /* ── Text — ultra high contrast ── */
+  --text-primary: #ffffff;
+  --text-secondary: #dcdce6;
+  --text-muted: #b0b0c0;
+  --text-dim: #7a7a90;
+
+  /* ── Borders ── */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-bright: rgba(255, 255, 255, 0.25);
+
+  /* ── Font ── */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Inter', monospace;
+
+  /* ── Spacing ── */
   --space-xs: 4px;
   --space-sm: 8px;
-  --space-md: 12px;
-  --space-lg: 16px;
-  --space-xl: 24px;
-  --space-2xl: 32px;
-  
-  /* Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 18px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* ── Radius ── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
   --radius-full: 9999px;
-  
-  /* Transitions */
+
+  /* ── Transitions ── */
   --transition-fast: 0.15s ease;
   --transition-base: 0.25s ease;
   --transition-slow: 0.4s ease;
@@ -78,6 +89,38 @@ html, body, #root {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── Gym Background Layer ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url('/gym-bg.png') center/cover no-repeat;
+  filter: blur(4px) brightness(0.3);
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 10, 16, 0.7) 0%,
+    rgba(6, 10, 16, 0.5) 40%,
+    rgba(6, 10, 16, 0.7) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
 }
 
 button {
@@ -87,6 +130,24 @@ button {
   outline: none;
   background: none;
   color: inherit;
+  min-height: 44px;
+  min-width: 44px;
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-fast), transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+button:active {
+  opacity: 0.75;
+  transform: scale(0.97);
+}
+
+a, input[type="button"], input[type="submit"] {
+  min-height: 44px;
+  min-width: 44px;
 }
 
 input {
@@ -97,49 +158,49 @@ input {
   color: inherit;
 }
 
-/* Scrollbar Styling */
+/* Scrollbar — nearly invisible */
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 3px;
+  height: 3px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-medium);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--border-bright);
+  background: rgba(255, 255, 255, 0.25);
 }
 
-/* Animations */
+/* ── Animations ── */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
+  from { opacity: 0; transform: translateY(-8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  50% { opacity: 0.6; }
 }
 
 @keyframes glow {
-  0%, 100% { box-shadow: 0 0 5px currentColor; }
-  50% { box-shadow: 0 0 15px currentColor, 0 0 30px currentColor; }
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
 }
 
 @keyframes shimmer {
@@ -148,7 +209,7 @@ input {
 }
 
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.95); }
+  from { opacity: 0; transform: scale(0.97); }
   to { opacity: 1; transform: scale(1); }
 }
 
@@ -157,38 +218,52 @@ input {
   to { transform: rotate(360deg); }
 }
 
+@keyframes glassShine {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
 .fade-in {
   animation: fadeIn 0.3s ease forwards;
 }
 
 .slide-up {
-  animation: slideUp 0.4s ease forwards;
+  animation: slideUp 0.35s ease forwards;
 }
 
 .scale-in {
-  animation: scaleIn 0.25s ease forwards;
+  animation: scaleIn 0.2s ease forwards;
 }
 
-/* Glassmorphism utility */
+/* ── Glassmorphism Utility ── */
 .glass {
-  background: rgba(10, 20, 34, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(30, 48, 80, 0.5);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-glow);
 }
 
-/* Glow effects */
-.glow-push { box-shadow: 0 0 16px rgba(255, 107, 53, 0.15); }
-.glow-pull { box-shadow: 0 0 16px rgba(168, 85, 247, 0.15); }
-.glow-legs { box-shadow: 0 0 16px rgba(34, 197, 94, 0.15); }
-.glow-accent { box-shadow: 0 0 16px rgba(59, 130, 246, 0.15); }
+.glass-strong {
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+  border: 1px solid var(--glass-border-bright);
+  box-shadow: var(--glass-shadow-elevated), var(--glass-glow);
+}
 
-/* Today indicator pulse */
+/* ── Soft glow effects ── */
+.glow-push { box-shadow: var(--glass-shadow), 0 0 24px rgba(255, 123, 79, 0.1); }
+.glow-pull { box-shadow: var(--glass-shadow), 0 0 24px rgba(183, 138, 255, 0.1); }
+.glow-legs { box-shadow: var(--glass-shadow), 0 0 24px rgba(76, 230, 138, 0.1); }
+.glow-accent { box-shadow: var(--glass-shadow), 0 0 24px rgba(124, 180, 255, 0.1); }
+
+/* Today pulse */
 .today-dot {
-  animation: glow 2s ease-in-out infinite;
+  animation: glow 3s ease-in-out infinite;
 }
 
-/* Layout utilities */
+/* Layout */
 .container {
   max-width: 480px;
   margin: 0 auto;
@@ -198,6 +273,6 @@ input {
 /* Responsive */
 @media (max-width: 480px) {
   :root {
-    --space-md: 10px;
+    --space-md: 12px;
   }
 }

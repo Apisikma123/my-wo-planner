@@ -13,13 +13,13 @@ export default function HghScoreCard({ score, exercises }: HghScoreCardProps) {
   const color = getHghColor(score);
   const label = getHghLabel(score);
 
-  const hasSprint = true; // Morning HGH (Sprint or Squat Jump) is done daily
+
   const hasHang = true; // Auto-done by user daily
   const hasHiTempo = true; // High-tempo explosive workout stimulates durability
   const hasCompound = exercises.some(e => e.category === 'compound');
 
   const factors = [
-    { Icon: Zap, name: 'Sprint/Jump Pagi', active: hasSprint, points: 25 },
+
     { Icon: Anchor, name: 'Dead Hang', active: hasHang, points: 15 },
     { Icon: Flame, name: 'Hi-Tempo Durab', active: hasHiTempo, points: 15 },
     { Icon: Dumbbell, name: 'Compound', active: hasCompound, points: 20 },

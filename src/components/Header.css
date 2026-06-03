@@ -1,29 +1,31 @@
 .header {
-  background: linear-gradient(135deg, #0a1120 0%, #131a2f 50%, #0a1120 100%);
-  border-bottom: 1px solid var(--border-medium);
-  padding: 24px 20px 20px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--glass-shadow), var(--glass-glow);
+  padding: 28px 24px 24px;
   text-align: center;
   position: relative;
   overflow: hidden;
-  margin: 0 -16px;
+  margin: 0;
 }
 
-@media (min-width: 820px) {
+@media (max-width: 819px) {
   .header {
-    border: 1px solid var(--border-medium);
-    border-radius: var(--radius-xl);
-    margin: 0;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(135deg, rgba(10, 17, 32, 0.8) 0%, rgba(19, 26, 47, 0.8) 50%, rgba(10, 17, 32, 0.8) 100%);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    margin: 0 -20px;
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+    border-top: none;
+    border-left: none;
+    border-right: none;
   }
 }
 
 .header-bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% -10%, rgba(59, 130, 246, 0.09) 0%, transparent 55%);
+  background: radial-gradient(ellipse at 50% -20%, rgba(124, 180, 255, 0.06) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -33,14 +35,10 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.4), transparent);
-  animation: headerScan 4s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, rgba(124, 180, 255, 0.2), transparent);
   pointer-events: none;
-}
-
-@keyframes headerScan {
-  0%, 100% { top: 0; opacity: 0; }
-  50% { top: 100%; opacity: 1; }
+  opacity: 0.6;
+  animation: none;
 }
 
 .header-content {
@@ -53,15 +51,15 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .header-label {
   font-size: 10px;
-  letter-spacing: 6px;
-  color: var(--color-hgh);
+  letter-spacing: 4px;
+  color: var(--text-secondary);
   font-weight: 700;
-  font-family: var(--font-mono);
+  text-transform: uppercase;
 }
 
 .header-settings-btn {
@@ -70,43 +68,44 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
-  padding: 4px;
+  padding: 8px;
   border-radius: var(--radius-sm);
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
   cursor: pointer;
   transition: all var(--transition-fast);
   line-height: 1;
+  color: var(--text-primary);
 }
 
 .header-settings-btn:hover {
-  background: rgba(59, 130, 246, 0.2);
-  transform: translateY(-50%) scale(1.1) rotate(90deg);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  transform: translateY(-50%) rotate(45deg);
+  border-color: var(--glass-border-bright);
 }
 
 .header-title {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 900;
-  letter-spacing: -1px;
-  color: var(--text-primary);
-  background: linear-gradient(135deg, #f1f5f9, #60a5fa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(124, 180, 255, 0.15);
 }
 
 .header-subtitle {
   font-size: 11px;
   color: var(--text-secondary);
-  margin-top: 4px;
-  letter-spacing: 2px;
+  margin-top: 6px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
 }
 
 .header-legend {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   justify-content: center;
-  margin-top: 14px;
+  margin-top: 20px;
   flex-wrap: wrap;
 }
 
@@ -114,17 +113,19 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  background: var(--bg-card);
-  border: 1px solid;
+  background: transparent;
+  border: none;
   border-radius: var(--radius-full);
-  padding: 3px 10px;
-  font-size: 9px;
-  letter-spacing: 1px;
-  transition: transform var(--transition-fast);
+  padding: 4px 0;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  transition: opacity var(--transition-fast);
+  opacity: 0.9;
+  font-weight: 700;
 }
 
 .legend-item:hover {
-  transform: scale(1.05);
+  opacity: 1;
 }
 
 .legend-dot {

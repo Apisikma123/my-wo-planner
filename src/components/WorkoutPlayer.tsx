@@ -98,7 +98,7 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
     if (ex.category === 'compound') return 90;
     if (ex.category === 'isolation') return 60;
     if (ex.category === 'conditioning') return 60;
-    if (ex.category === 'sprint') return 45;
+    if (ex.category === 'hiit') return 45;
     return 30; // default/mobility
   };
 
@@ -228,7 +228,7 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
 
   const getExerciseIcon = (category: string) => {
     if (category === 'mobility') return <PersonStanding size={48} />;
-    if (category === 'sprint') return <Zap size={48} />;
+    if (category === 'hiit') return <Zap size={48} />;
     if (category === 'conditioning') return <Activity size={48} />;
     if (category === 'recovery') return <Anchor size={48} />;
     return <Dumbbell size={48} />;

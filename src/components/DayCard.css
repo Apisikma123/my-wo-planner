@@ -1,160 +1,169 @@
 .day-card {
-  border: 1px solid;
-  border-radius: 12px;
-  padding: 10px 4px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 12px 6px 10px;
   text-align: center;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
   position: relative;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
-  min-height: 76px;
+  gap: 4px;
+  min-height: 80px;
   justify-content: center;
+  background: rgba(10, 14, 24, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .day-card:active {
-  transform: scale(0.96);
+  transform: scale(0.97);
 }
 
 .day-card:hover {
-  transform: translateY(-3px) scale(1.03);
-  filter: brightness(1.15);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 12px var(--day-color);
+  transform: translateY(-2px);
+  background: rgba(22, 28, 42, 0.6);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .day-card.selected {
-  transform: scale(1.04);
-  box-shadow: 0 0 16px var(--day-color);
+  transform: none;
+  box-shadow: 0 0 16px rgba(124, 180, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .day-card.past:not(.selected) {
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 .today-indicator {
   position: absolute;
-  top: -3px;
-  right: -3px;
-  width: 9px;
-  height: 9px;
+  top: 4px;
+  right: 4px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  animation: glow 2s ease-in-out infinite;
+  animation: glow 3s ease-in-out infinite;
 }
 
 .completed-check {
   position: absolute;
-  top: -5px;
-  left: -5px;
-  width: 18px;
-  height: 18px;
+  top: -4px;
+  left: -4px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: var(--color-success);
-  color: #fff;
+  color: #000000;
   font-size: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 900;
-  box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
-  border: 1.5px solid rgba(3, 8, 16, 0.8);
+  box-shadow: 0 0 8px rgba(78, 245, 146, 0.3);
+  border: 2px solid rgba(6, 10, 16, 0.8);
 }
 
 .day-icon {
   font-size: 18px;
   line-height: 1;
-  transition: transform 0.2s ease;
+  transition: transform 0.15s ease;
+  opacity: 1;
+  filter: drop-shadow(0 0 4px currentColor);
 }
 
 .day-card:hover .day-icon {
-  transform: scale(1.2);
+  transform: none;
 }
 
 .day-name {
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.5px;
   font-weight: 800;
   text-transform: uppercase;
   line-height: 1;
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .day-date {
-  font-size: 9px;
-  color: var(--text-secondary);
-  margin-top: 1px;
-  font-weight: 600;
+  font-size: 10px;
+  color: #ffffff;
+  opacity: 0.95;
+  margin-top: 2px;
+  font-weight: 700;
   line-height: 1;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .day-dot {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
-/* Mobile optimised - slightly larger tap targets & scrollable */
+/* Mobile */
 @media (max-width: 640px) {
   .day-card {
-    min-height: 84px;
-    min-width: 78px;
+    min-height: 80px;
+    min-width: 72px;
     padding: 10px 4px 8px;
   }
   .day-icon {
     font-size: 20px;
   }
   .day-name {
-    font-size: 9px;
+    font-size: 10px;
   }
   .day-date {
     font-size: 9px;
   }
 }
 
-
 @media (min-width: 480px) {
   .day-card {
-    padding: 12px 6px 10px;
-    min-height: 88px;
-    border-radius: 14px;
+    padding: 14px 8px 12px;
+    min-height: 90px;
+    border-radius: var(--radius-md);
   }
   .day-icon {
     font-size: 22px;
   }
   .day-name {
-    font-size: 10px;
-    letter-spacing: 0.5px;
+    font-size: 11px;
   }
   .day-date {
     font-size: 10px;
     margin-top: 2px;
   }
   .day-dot {
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
   }
 }
 
 @media (min-width: 820px) {
   .day-card {
     padding: 18px 8px 14px;
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     min-height: 100px;
   }
   .day-icon {
-    font-size: 26px;
+    font-size: 24px;
   }
   .day-name {
     font-size: 12px;
   }
   .day-date {
     font-size: 11px;
-    margin-top: 3px;
+    margin-top: 2px;
   }
   .day-dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
   }
 }

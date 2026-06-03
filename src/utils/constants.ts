@@ -48,15 +48,6 @@ export function getDailyChecklist(isoDate?: string, workoutType?: string) {
   const isFullRest = workoutType === 'fullrest' || isSunday;
   
   const checklist = [];
-  
-  if (!isFullRest) {
-    const dayOfMonth = date.getDate();
-    const isEven = dayOfMonth % 2 === 0;
-    const morningExercise = isEven
-      ? { icon: 'Zap', label: 'Sprint di Tempat', value: '30 dtk × 5-6 set (Pagi)', color: '#fbbf24' }
-      : { icon: 'Activity', label: 'Squat Jump', value: '3 set × 10-12 rep (Pagi)', color: '#fbbf24' };
-    checklist.push(morningExercise);
-  }
 
   checklist.push(
     { icon: 'Anchor', label: 'Dead Hang', value: '3 × 30–60 dtk', color: '#00d4ff' },

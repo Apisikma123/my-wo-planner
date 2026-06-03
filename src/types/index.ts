@@ -1,6 +1,6 @@
 export type Phase = 'adaptation' | 'overload' | 'peak' | 'deload';
 export type WorkoutType = 'push' | 'pull' | 'legs' | 'rest' | 'fullrest';
-export type ExerciseCategory = 'compound' | 'isolation' | 'conditioning' | 'sprint' | 'mobility' | 'recovery';
+export type ExerciseCategory = 'compound' | 'isolation' | 'conditioning' | 'hiit' | 'mobility' | 'recovery';
 
 export interface WorkoutDay {
   id: string;

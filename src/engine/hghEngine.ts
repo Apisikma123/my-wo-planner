@@ -9,9 +9,7 @@ export function calculateHghScore(day: WorkoutDay): number {
     return day.workoutType === 'fullrest' ? 45 : 35;
   }
   
-  // Morning Sprint / Squat Jump stimulus included? (Done daily in the morning)
-  const hasSprint = true;
-  if (hasSprint) score += 25;
+
   
   // Dead hang included? (Auto-done by user daily)
   const hasHang = true;
@@ -40,7 +38,7 @@ export function getHghTip(phase: Phase, workoutType: WorkoutType): string {
   const tips: Record<Phase, string> = {
     adaptation: 'Fokus kualitas tidur 8-9 jam. HGH paling banyak diproduksi saat deep sleep fase ini.',
     overload: 'Volume tinggi = stimulus HGH maksimal. Pastikan protein cukup 98-134g hari ini.',
-    peak: 'Peak volume! Sprint HGH dan compound movements optimal. Hindari gula 2 jam sebelum tidur.',
+    peak: 'Peak volume! HIIT HGH dan compound movements optimal. Hindari gula 2 jam sebelum tidur.',
     deload: 'Recovery week — tubuh sedang rebuild. Tidur gelap total, HP jauh 30 mnt sebelum tidur.',
   };
   
