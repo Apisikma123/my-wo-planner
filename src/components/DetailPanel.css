@@ -263,9 +263,9 @@
 /* Metrics */
 .detail-metrics-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin: 20px 0;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 0 0 20px 0;
 }
 
 .metric-item {
@@ -546,8 +546,7 @@
   .detail-metrics-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-    margin: 14px 0;
-    padding: 0 16px;
+    margin: 0 0 16px 0;
   }
 
   .detail-body-scrollable {
@@ -555,10 +554,10 @@
   }
 
   .detail-scores {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    align-items: center;
     padding: 12px;
-    gap: 12px;
+    gap: 16px;
   }
 
   .detail-meters {
@@ -707,8 +706,7 @@
 
 @media (max-width: 400px) {
   .detail-metrics-grid {
-    gap: 4px;
-    padding: 0 10px;
+    gap: 6px;
   }
   
   .metric-item {

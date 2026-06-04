@@ -35,9 +35,14 @@ const DayCard = memo(function DayCard({ day, isSelected, isToday, isPast, onSele
   if (day.isBeforeStart) {
     return (
       <div className="day-card empty" style={{ opacity: 0.2, pointerEvents: 'none' }}>
-        <div className="day-name" style={{ color: 'var(--text-muted)' }}>{day.displayDate.split(' ')[0]}</div>
+        <div className="day-icon">
+          <Minus size={12} style={{ color: 'var(--text-muted)' }} />
+        </div>
+        <div className="day-name" style={{ color: 'var(--text-muted)' }}>
+          {day.displayDate.split(' ')[0]}
+        </div>
         <div className="day-date" style={{ color: 'var(--text-muted)' }}>{datePart}</div>
-        <div className="day-icon" style={{ marginTop: '4px' }}><Minus size={12} style={{ color: 'var(--text-muted)' }} /></div>
+        <div className="day-dot" style={{ visibility: 'hidden' }} />
       </div>
     );
   }
@@ -61,15 +66,14 @@ const DayCard = memo(function DayCard({ day, isSelected, isToday, isPast, onSele
         {day.displayDate.split(' ')[0]}
       </div>
       <div className="day-date">{datePart}</div>
-      {isWorkout && (
-        <div
-          className="day-dot"
-          style={{
-            background: isPast ? `${col}50` : col,
-            boxShadow: isPast ? 'none' : `0 0 4px ${col}`,
-          }}
-        />
-      )}
+      <div
+        className="day-dot"
+        style={{
+          background: isPast ? `${col}50` : col,
+          boxShadow: isPast ? 'none' : `0 0 4px ${col}`,
+          visibility: isWorkout ? 'visible' : 'hidden',
+        }}
+      />
     </button>
   );
 });

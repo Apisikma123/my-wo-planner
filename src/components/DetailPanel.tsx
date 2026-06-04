@@ -252,46 +252,46 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
           </div>
         </div>
 
-        {/* High-Level Labeled Metrics */}
-        {isWorkout && (
-          <div className="detail-metrics-grid">
-            <div className="metric-item">
-              <span className="metric-icon"><Clock size={18} /></span>
-              <div className="metric-info">
-                <span className="metric-lbl">DURASI</span>
-                <span className="metric-val">{getWorkoutDuration()}</span>
-              </div>
-            </div>
-            <div className="metric-item">
-              <span className="metric-icon"><Flame size={18} /></span>
-              <div className="metric-info">
-                <span className="metric-lbl">EST. KALORI</span>
-                <span className="metric-val">{getEstimatedCalories()}</span>
-              </div>
-            </div>
-            <div className="metric-item">
-              <span className="metric-icon"><Dumbbell size={18} /></span>
-              <div className="metric-info">
-                <span className="metric-lbl">KESULITAN</span>
-                <span className="metric-val" style={{ color: day.phase === 'peak' ? '#ff3e3e' : '#fff' }}>{getDifficultyLevel()}</span>
-              </div>
-            </div>
-            <div className="metric-item">
-              <span className="metric-icon"><Dna size={18} /></span>
-              <div className="metric-info">
-                <span className="metric-lbl">HGH STIMULUS</span>
-                <span className="metric-val" style={{ color: '#ccff00' }}>EXTREME</span>
-              </div>
-            </div>
-          </div>
-        )}
-
         <div className="detail-body-scrollable">
           {/* Header Metadata Info */}
           <div className="detail-info-strip">
             <div className="detail-date">{fullDate}</div>
             <span className="detail-week-tag">WEEK {day.weekIndex}</span>
           </div>
+
+          {/* High-Level Labeled Metrics */}
+          {isWorkout && (
+            <div className="detail-metrics-grid">
+              <div className="metric-item">
+                <span className="metric-icon"><Clock size={18} /></span>
+                <div className="metric-info">
+                  <span className="metric-lbl">DURASI</span>
+                  <span className="metric-val">{getWorkoutDuration()}</span>
+                </div>
+              </div>
+              <div className="metric-item">
+                <span className="metric-icon"><Flame size={18} /></span>
+                <div className="metric-info">
+                  <span className="metric-lbl">EST. KALORI</span>
+                  <span className="metric-val">{getEstimatedCalories()}</span>
+                </div>
+              </div>
+              <div className="metric-item">
+                <span className="metric-icon"><Dumbbell size={18} /></span>
+                <div className="metric-info">
+                  <span className="metric-lbl">KESULITAN</span>
+                  <span className="metric-val" style={{ color: day.phase === 'peak' ? '#ff3e3e' : '#fff' }}>{getDifficultyLevel()}</span>
+                </div>
+              </div>
+              <div className="metric-item">
+                <span className="metric-icon"><Dna size={18} /></span>
+                <div className="metric-info">
+                  <span className="metric-lbl">HGH STIMULUS</span>
+                  <span className="metric-val" style={{ color: '#ccff00' }}>EXTREME</span>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Scores Row */}
           {isWorkout && (

@@ -1,31 +1,52 @@
 .recovery-meter {
-  text-align: center;
-  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
 }
 
-.recovery-label {
-  font-size: 9px;
-  letter-spacing: 2px;
+.meter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.meter-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
   color: var(--text-muted);
-  font-weight: 600;
-  margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
-.recovery-value {
-  font-size: 22px;
+.meter-value {
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
 }
 
-.recovery-bar {
-  height: 3px;
-  background: var(--bg-primary);
+.meter-label {
+  font-size: 10px;
+  font-weight: 600;
+  opacity: 0.8;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.meter-track {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.04);
   border-radius: var(--radius-full);
   overflow: hidden;
-  margin-top: 8px;
+  width: 100%;
 }
 
-.recovery-fill {
+.meter-fill {
   height: 100%;
   border-radius: var(--radius-full);
   transition: width 0.6s ease;
