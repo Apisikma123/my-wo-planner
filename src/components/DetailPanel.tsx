@@ -148,18 +148,18 @@ const expandCoolDown = (coolDownExercise: Exercise): Exercise[] => {
 interface DetailPanelProps {
   day: WorkoutDay;
   onClose: () => void;
+  onStartSession?: (playableExercises: Exercise[]) => void;
 }
 
-export default function DetailPanel({ day, onClose }: DetailPanelProps) {
+export default function DetailPanel({ day, onClose, onStartSession }: DetailPanelProps) {
   const { toggleComplete, completedDays } = useWorkoutEngine();
-  const [isPlaying, setIsPlaying] = useState(false);
   const savedSessionKey = `hgh_workout_session_${day.isoDate}`;
   const [hasSavedSession, setHasSavedSession] = useState(false);
 
-  // Sync saved session status when panel is open or playing state changes
+  // Sync saved session status when panel is open
   useEffect(() => {
     setHasSavedSession(!!localStorage.getItem(savedSessionKey));
-  }, [day.isoDate, isPlaying, savedSessionKey]);
+  }, [day.isoDate, savedSessionKey]);
 
   const col = TYPE_COLORS[day.workoutType];
   const isWorkout = day.workoutType === 'push' || day.workoutType === 'pull' || day.workoutType === 'legs';
@@ -316,7 +316,7 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
                 <div className="center-resume-wrapper">
                   <button
                     className="center-start-btn resume"
-                    onClick={() => setIsPlaying(true)}
+                    onClick={() => onStartSession?.(playableExercises)}
                   >
                     <span className="play-icon"><Play size={18} /></span>
                     <div>
@@ -340,7 +340,7 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
               ) : (
                 <button
                   className="center-start-btn"
-                  onClick={() => setIsPlaying(true)}
+                  onClick={() => onStartSession?.(playableExercises)}
                 >
                   <span className="play-icon"><Play size={18} /></span>
                   <div>
@@ -435,7 +435,7 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
               <div className="resume-workout-actions">
                 <button
                   className="start-workout-btn resume-btn"
-                  onClick={() => setIsPlaying(true)}
+                  onClick={() => onStartSession?.(playableExercises)}
                 >
                   <Rocket size={14} style={{ verticalAlign: 'middle', marginRight: 6 }} /> LANJUTKAN LATIHAN
                 </button>
@@ -455,7 +455,7 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
             ) : (
               <button
                 className="start-workout-btn"
-                onClick={() => setIsPlaying(true)}
+                onClick={() => onStartSession?.(playableExercises)}
               >
                 <Rocket size={14} style={{ verticalAlign: 'middle', marginRight: 6 }} /> MULAI LATIHAN SEKARANG
               </button>
@@ -476,21 +476,8 @@ export default function DetailPanel({ day, onClose }: DetailPanelProps) {
           </button>
         </div>
 
-        {/* Active Workout Player Modal Overlay */}
-        {isPlaying && (
-          <WorkoutPlayer 
-            day={day} 
-            exercises={playableExercises}
-            onClose={() => setIsPlaying(false)} 
-            onComplete={() => {
-              if (!isCompleted) {
-                handleComplete();
-              }
-              setIsPlaying(false);
-            }} 
-          />
-        )}
-      </div>
+      {/* Active Workout Player moved to RosterPage to prevent being a popup */}
     </div>
-  );
+  </div>
+);
 }

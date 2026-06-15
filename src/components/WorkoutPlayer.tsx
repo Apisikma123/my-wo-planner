@@ -3,7 +3,7 @@ import { Exercise, WorkoutDay } from '../types';
 import { 
   X, Trophy, Dna, AlertTriangle, Play, Pause, 
   Check, Flag, ArrowRight, SkipForward,
-  PersonStanding, Zap, Activity, Anchor, Dumbbell
+  PersonStanding, Zap, Activity, Anchor, Dumbbell, RotateCcw
 } from 'lucide-react';
 import './WorkoutPlayer.css';
 
@@ -44,6 +44,10 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
     return null;
   });
   const [isTimerPaused, setIsTimerPaused] = useState<boolean>(() => savedSession?.isTimerPaused ?? false);
+
+  // Aturan 3: Jeda 10 Detik Bersiap (Hanya saat baru mulai, tidak dari saved session)
+  const [isPreparing, setIsPreparing] = useState<boolean>(() => !savedSession);
+  const [prepTimeLeft, setPrepTimeLeft] = useState<number>(10);
   
   const intervalRef = useRef<any>(null);
   const beepedSeconds = useRef<Record<number, boolean>>({});
@@ -131,6 +135,10 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
     if (durationSec) {
       setExerciseTimer(durationSec);
       setIsTimerPaused(false);
+      
+      // Jeda 10 detik persiapan setiap kali latihan berbasis waktu (pemanasan/pendinginan) dimulai
+      setIsPreparing(true);
+      setPrepTimeLeft(10);
     } else {
       setExerciseTimer(null);
     }
@@ -145,6 +153,22 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
     intervalRef.current = setInterval(() => {
       if (showCloseConfirm) return; // Pause timer when confirmation modal is visible
       
+      // Aturan 3: Countdown Bersiap 10 Detik
+      if (isPreparing) {
+        setPrepTimeLeft((prev) => {
+          if (prev <= 1) {
+            playBeep(1200, 0.5); // Bunyi panjang saat mulai
+            setIsPreparing(false);
+            return 0;
+          }
+          if (prev <= 4) {
+            playBeep(880, 0.1); // Bunyi beep 3, 2, 1
+          }
+          return prev - 1;
+        });
+        return;
+      }
+
       if (isResting) {
         setTimeRemaining((prev) => {
           if (prev <= 1) {
@@ -181,7 +205,7 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [isResting, exerciseTimer, isTimerPaused, currentIdx, currentSet, showCloseConfirm]);
+  }, [isResting, exerciseTimer, isTimerPaused, currentIdx, currentSet, showCloseConfirm, isPreparing]);
 
   const handleDone = () => {
     if (!currentExercise) return;
@@ -232,6 +256,31 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
     if (category === 'conditioning') return <Activity size={48} />;
     if (category === 'recovery') return <Anchor size={48} />;
     return <Dumbbell size={48} />;
+  };
+
+  // Aturan 2: Tombol Kembali ke Set/Reps Sebelumnya
+  const handleRewind = () => {
+    if (isResting) {
+      setIsResting(false);
+      // Reset timer exercise to full
+      setIsTimerPaused(true);
+      setTimeout(() => setIsTimerPaused(false), 100);
+      return;
+    }
+    
+    if (currentSet > 1) {
+      setCurrentSet(currentSet - 1);
+    } else if (currentIdx > 0) {
+      setCurrentIdx(currentIdx - 1);
+      const prevEx = exercises[currentIdx - 1];
+      setCurrentSet(prevEx ? prevEx.sets : 1);
+    }
+    
+    // Reset timer
+    if (exerciseTimer !== null) {
+      setIsTimerPaused(true);
+      setTimeout(() => setIsTimerPaused(false), 100);
+    }
   };
 
   // Nasal breathing biohacking tips for growth hormone stimulus
@@ -358,6 +407,23 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
               LEWATI ISTIRAHAT <SkipForward size={14} style={{ verticalAlign: 'middle', marginLeft: 4 }} />
             </button>
           </div>
+        ) : isPreparing ? (
+          /* PREPARATION VIEW */
+          <div className="player-rest-screen fade-in" style={{ justifyContent: 'center' }}>
+             <h2 style={{ fontSize: '32px', color: '#fff', marginBottom: '20px' }}>BERSIAP...</h2>
+             <div className="breathing-circle-container" style={{ transform: 'scale(1.5)', margin: '40px 0' }}>
+               <div className="breathing-circle-pulse" />
+               <div className="breathing-circle" style={{ borderColor: '#ff3e3e' }}>
+                 <span className="timer-seconds" style={{ color: '#ff3e3e', fontSize: '64px' }}>{prepTimeLeft}</span>
+               </div>
+             </div>
+             <p style={{ color: '#ccff00', fontSize: '18px', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '8px' }}>
+               {currentExercise.name}
+             </p>
+             <p style={{ color: '#94a3b8', fontSize: '14px', maxWidth: '80%', lineHeight: '1.5', textAlign: 'center' }}>
+               {currentExercise.detail}
+             </p>
+          </div>
         ) : (
           /* ACTIVE EXERCISE VIEW */
           <div className="player-active-screen fade-in">
@@ -411,16 +477,38 @@ export default function WorkoutPlayer({ day, exercises: propExercises, onClose, 
               </div>
             </div>
 
-            {/* Next / Complete Button */}
-            <button className="complete-set-btn" onClick={handleDone}>
-              {currentSet < totalSets ? (
-                <><Check size={16} style={{ verticalAlign: 'middle', marginRight: 6 }} /> SELESAI SET INI</>
-              ) : (isLastExercise ? (
-                <><Flag size={16} style={{ verticalAlign: 'middle', marginRight: 6 }} /> SELESAIKAN LATIHAN</>
-              ) : (
-                <><ArrowRight size={16} style={{ verticalAlign: 'middle', marginRight: 6 }} /> SELESAI & LANJUT</>
-              ))}
-            </button>
+            {/* Next / Complete Button & Rewind */}
+            <div style={{ display: 'flex', gap: '12px', marginTop: 'auto', zIndex: 10 }}>
+              <button 
+                style={{ 
+                  background: 'transparent', 
+                  border: '1px solid rgba(255,255,255,0.2)', 
+                  color: '#ccc', 
+                  padding: '16px', 
+                  borderRadius: '14px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  opacity: (currentIdx === 0 && currentSet === 1) ? 0.3 : 1
+                }} 
+                onClick={handleRewind}
+                disabled={currentIdx === 0 && currentSet === 1}
+                title="Kembali ke Set Sebelumnya"
+              >
+                <RotateCcw size={20} />
+              </button>
+              
+              <button className="complete-set-btn" style={{ flex: 1 }} onClick={handleDone}>
+                {currentSet < totalSets ? (
+                  <><Check size={16} style={{ verticalAlign: 'middle', marginRight: 6 }} /> SELESAI SET INI</>
+                ) : (isLastExercise ? (
+                  <><Flag size={16} style={{ verticalAlign: 'middle', marginRight: 6 }} /> SELESAIKAN LATIHAN</>
+                ) : (
+                  <><ArrowRight size={16} style={{ verticalAlign: 'middle', marginRight: 6 }} /> SELESAI & LANJUT</>
+                ))}
+              </button>
+            </div>
           </div>
         )}
       </div>

@@ -8,10 +8,28 @@ import ProgressionBadge from '../components/ProgressionBadge';
 import WeekFilter from '../components/WeekFilter';
 import CalendarGrid from '../components/CalendarGrid';
 import DetailPanel from '../components/DetailPanel';
+import WorkoutPlayer from '../components/WorkoutPlayer';
 import './RosterPage.css';
 
 export default function RosterPage() {
-  const { selectedDay, selectDay } = useWorkoutEngine();
+  const { selectedDay, selectDay, toggleComplete, completedDays } = useWorkoutEngine();
+  const [activeSession, setActiveSession] = useState<{day: any, exercises: any[]} | null>(null);
+
+  if (activeSession) {
+    return (
+      <WorkoutPlayer
+        day={activeSession.day}
+        exercises={activeSession.exercises}
+        onClose={() => setActiveSession(null)}
+        onComplete={() => {
+          if (!completedDays.includes(activeSession.day.isoDate)) {
+            toggleComplete(activeSession.day.id);
+          }
+          setActiveSession(null);
+        }}
+      />
+    );
+  }
 
   return (
     <div className="roster-page">
@@ -30,7 +48,11 @@ export default function RosterPage() {
       </div>
 
       {selectedDay && (
-        <DetailPanel day={selectedDay} onClose={() => selectDay(null)} />
+        <DetailPanel 
+          day={selectedDay} 
+          onClose={() => selectDay(null)} 
+          onStartSession={(exercises) => setActiveSession({day: selectedDay, exercises})}
+        />
       )}
     </div>
   );

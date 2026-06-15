@@ -1,0 +1,102 @@
+/* ATURAN 1: WAJIB FULL SCREEN / PAGE BARU */
+/* Paksa komponen menjadi width: 100vw dan height: 100vh */
+.workout-strict-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Menggunakan 100dvh sangat disarankan untuk Mobile Safari/Chrome */
+  height: 100dvh; 
+  background-color: #0f172a; /* Warna dark premium */
+  color: #f8fafc;
+  z-index: 99999; /* Pastikan selalu di atas, bukan sebagai modal tapi menutupi seluruh screen */
+  display: flex;
+  flex-direction: column;
+}
+
+.workout-content {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+/* ATURAN 3: Angka countdown besar */
+.huge-countdown {
+  font-size: 140px;
+  font-weight: 800;
+  color: #fbbf24; /* Warna kuning peringatan */
+  animation: pulse-countdown 1s infinite;
+}
+
+.main-timer {
+  font-size: 100px;
+  font-weight: 800;
+  color: #34d399; /* Warna hijau berjalan */
+  margin-top: 20px;
+}
+
+@keyframes pulse-countdown {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* ATURAN 4: Pastikan tombol di posisi paling bawah layar HP menggunakan position fixed/sticky */
+.workout-bottom-controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px); 
+  padding: 16px 24px;
+  /* Tambahkan safe-area agar tidak terpotong indikator home iPhone */
+  padding-bottom: calc(16px + env(safe-area-inset-bottom)); 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #334155;
+  z-index: 100000;
+}
+
+/* ATURAN 2: Tombol Kembali ke Set/Reps Sebelumnya */
+.btn-kembali-set, .btn-selesai-latihan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-kembali-set {
+  color: #94a3b8;
+}
+
+.btn-kembali-set:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ATURAN 4: Tombol Selesai yang jelas */
+.btn-selesai-latihan {
+  color: #f87171; 
+}
+
+.btn-selesai-latihan svg {
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  padding: 10px;
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
