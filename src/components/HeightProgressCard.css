@@ -1,0 +1,260 @@
+.height-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.plate-status-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+}
+
+.plate-icon {
+  font-size: 20px;
+}
+
+.plate-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.plate-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.plate-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.height-main {
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.current-height-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.ch-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.ch-value {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.ch-unit {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+
+.ch-target {
+  font-size: 13px;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.update-height-btn {
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.update-height-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-medium);
+}
+
+.height-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--bg-primary);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  min-width: 160px;
+}
+
+.height-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.notes-input {
+  width: 100%;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 12px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.edit-cancel, .edit-save {
+  flex: 1;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.edit-cancel {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.edit-save {
+  background: var(--color-accent);
+  color: var(--bg-primary);
+  border: 1px solid transparent;
+}
+
+/* Progress */
+.progress-section {
+  padding: 0 16px 20px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.prog-gained { color: var(--color-success); }
+.prog-remaining { color: var(--text-muted); }
+
+.progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background: var(--border-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+  transition: width 1s ease-out;
+}
+
+/* Metrics */
+.metrics-row {
+  display: flex;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+}
+
+.metric-box {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metric-box:first-child {
+  border-right: 1px solid var(--border-subtle);
+}
+
+.metric-icon {
+  color: var(--color-success);
+  margin-bottom: 4px;
+}
+
+.metric-data {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.md-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.md-unit {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.md-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.md-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.last-update {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 12px;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+}

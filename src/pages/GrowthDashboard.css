@@ -1,0 +1,130 @@
+.growth-dashboard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 80px; 
+}
+
+.dashboard-content {
+  padding: 0 var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .dashboard-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    padding: 32px 40px;
+  }
+  
+  .growth-page-title {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+  
+  .composite-score-banner {
+    grid-column: 1 / -1;
+  }
+  
+  .section-divider {
+    grid-column: 1 / -1;
+  }
+
+  .logs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.growth-page-title {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title-date {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.title-text {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.composite-score-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.cs-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cs-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.cs-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.cs-value {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--color-accent);
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 12px 0;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.section-divider::before { margin-right: 16px; }
+.section-divider::after { margin-left: 16px; }
+
+.logs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bottom-spacing {
+  height: 24px;
+}

@@ -1,0 +1,262 @@
+.plyo-enforcer {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.plyo-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  min-height: 48px;
+}
+
+.plyo-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.plyo-icon {
+  color: #fbbf24;
+}
+
+.plyo-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+}
+
+.plyo-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+}
+
+.plyo-status-badge {
+  font-size: 9px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 1px;
+}
+
+.plyo-status-badge.complete {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.plyo-status-badge.pending {
+  background: rgba(251, 191, 36, 0.1);
+  color: #fbbf24;
+}
+
+.plyo-body {
+  padding: 0 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plyo-intro {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid #fbbf24;
+}
+
+.plyo-task {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all var(--transition-fast);
+}
+
+.plyo-task.complete {
+  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.task-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.task-num {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.task-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.task-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.task-desc {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.task-progress {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.task-val {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.plyo-task.complete .task-val {
+  color: #22c55e;
+}
+
+.task-target {
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 30px;
+}
+
+.timer-start {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timer-start:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.active-timer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  flex: 1;
+}
+
+.timer-display {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: #ef4444;
+  flex: 1;
+}
+
+.timer-stop {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.task-check {
+  color: #22c55e;
+  margin-left: auto;
+}
+
+.task-progress-bar {
+  margin-left: 30px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.tpb-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.task-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 30px;
+}
+
+.task-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.task-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+/* Save Button */
+.plyo-save-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+  margin-top: 4px;
+}

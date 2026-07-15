@@ -82,3 +82,57 @@ export const BARBELL_WEIGHTS = [
   { label: '13 kg (2+2+1.25+1.25/sisi)', value: 13 },
   { label: '14 kg (2+2+2+1/sisi)', value: 14 },
 ];
+
+// ── HGH Growth System Constants ──
+
+export const USER_PROFILE = {
+  age: 17,
+  currentHeight: 168,
+  targetHeight: 180,
+  sleepHours: 9,
+  supplements: ['Vitamin D3 + K2', 'Zinc + Vitamin B2'],
+};
+
+export const CALCIUM_DAILY_TARGET = 1200; // mg
+export const PROTEIN_DAILY_MIN = 98; // g
+export const PROTEIN_DAILY_MAX = 134; // g
+export const WATER_DAILY_TARGET = 2.5; // liters
+export const SLEEP_IDEAL_BEDTIME = '23:00';
+export const SLEEP_IDEAL_DURATION = 9; // hours
+
+export const CALCIUM_FOODS = [
+  { name: 'Susu (1 gelas)', calciumMg: 300, icon: '🥛' },
+  { name: 'Yogurt (1 cup)', calciumMg: 200, icon: '🥄' },
+  { name: 'Keju (1 slice)', calciumMg: 200, icon: '🧀' },
+  { name: 'Tahu (100g)', calciumMg: 350, icon: '🫘' },
+  { name: 'Tempe (100g)', calciumMg: 120, icon: '🫘' },
+  { name: 'Bayam (100g)', calciumMg: 100, icon: '🥬' },
+  { name: 'Brokoli (100g)', calciumMg: 47, icon: '🥦' },
+  { name: 'Ikan Sarden (100g)', calciumMg: 382, icon: '🐟' },
+  { name: 'Kacang Almond (30g)', calciumMg: 75, icon: '🥜' },
+  { name: 'Telur (1 butir)', calciumMg: 28, icon: '🥚' },
+];
+
+export const SUPPLEMENT_SCHEDULE = {
+  d3k2: {
+    name: 'Vitamin D3 + K2',
+    timing: 'Setelah makan berlemak (siang/malam)',
+    rule: 'Fat-soluble — HARUS diminum bersama makanan yang mengandung lemak',
+    icon: '☀️',
+  },
+  zincB2: {
+    name: 'Zinc + Vitamin B2',
+    timing: 'Perut kosong (pagi) atau makan ringan',
+    rule: 'Penyerapan optimal saat perut kosong. Jika mual, minum dengan makanan ringan',
+    icon: '💊',
+  },
+};
+
+export const GROWTH_STORAGE_KEY = 'hgh-growth-data';
+
+export const PLYO_TARGETS = {
+  hangMinutes: 5,    // 5 min cumulative dead hang
+  plyoMinutes: 15,   // 15-20 min jumping rope / squat jumps
+  coreMinutes: 5,    // 5 min plank / hollow body
+};
+

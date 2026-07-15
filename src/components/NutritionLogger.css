@@ -1,0 +1,373 @@
+.nutrition-logger {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.nutri-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  min-height: 48px;
+}
+
+.nutri-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nutri-icon {
+  font-size: 16px;
+}
+
+.nutri-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+}
+
+.nutri-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+}
+
+.nutri-score-badge {
+  font-size: 14px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.nutri-body {
+  padding: 0 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Calcium Critical Alert */
+.calcium-critical-alert {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.alert-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ef4444;
+  margin-bottom: 6px;
+}
+
+.alert-message {
+  font-size: 12px;
+  color: #fca5a5;
+  line-height: 1.5;
+}
+
+.alert-message strong {
+  color: #ef4444;
+}
+
+/* Calcium Progress */
+.calcium-progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calcium-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calcium-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+}
+
+.calcium-value {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.calcium-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.calcium-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease, background 0.4s ease;
+}
+
+/* Food Grid */
+.food-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.food-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.food-item {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.food-item.active {
+  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.food-add-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 6px;
+  gap: 2px;
+  width: 100%;
+  min-height: 60px;
+}
+
+.food-emoji {
+  font-size: 18px;
+}
+
+.food-name {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.food-mg {
+  font-size: 10px;
+  font-weight: 700;
+  color: #22c55e;
+}
+
+.food-count-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.food-minus, .food-plus {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  min-width: 22px;
+  min-height: 22px;
+}
+
+.food-count {
+  font-size: 12px;
+  font-weight: 700;
+  color: #22c55e;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Protein */
+.protein-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.protein-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.protein-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.protein-value {
+  font-size: 15px;
+  font-weight: 700;
+  min-width: 45px;
+  text-align: right;
+}
+
+.protein-target {
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+/* Water */
+.water-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.water-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-height: 34px;
+  min-width: 50px;
+  transition: all var(--transition-fast);
+}
+
+.water-btn.active {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: #22c55e;
+}
+
+/* Sugar toggle */
+.sugar-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(34, 197, 94, 0.06);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  width: 100%;
+  justify-content: flex-start;
+  font-size: 12px;
+  color: var(--text-secondary);
+  min-height: 44px;
+}
+
+.sugar-toggle.active-bad {
+  background: rgba(239, 68, 68, 0.06);
+  border-color: rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+}
+
+/* Warnings */
+.nutri-warnings {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nutri-warning {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.nutri-warning.critical {
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.nutri-warning.warning {
+  background: rgba(251, 191, 36, 0.06);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.nutri-warning.info {
+  background: rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.warning-title {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.nutri-warning.critical .warning-title { color: #ef4444; }
+.nutri-warning.warning .warning-title { color: #fbbf24; }
+.nutri-warning.info .warning-title { color: #3b82f6; }
+
+.warning-msg {
+  color: var(--text-muted);
+}
+
+/* Field */
+.nutri-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Save button */
+.nutri-save-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  color: #000;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+}
+
+.nutri-save-btn:hover {
+  box-shadow: 0 6px 24px rgba(34, 197, 94, 0.4);
+  transform: translateY(-1px);
+}

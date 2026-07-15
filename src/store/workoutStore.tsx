@@ -72,6 +72,8 @@ function workoutReducer(state: WorkoutState, action: WorkoutAction): WorkoutStat
       const roster = generateRoster(fromIsoString(state.startDate), state.visibleWeeks, state.completedDays);
       return { ...state, roster };
     }
+    case 'SET_STATE':
+      return { ...state, ...action.payload };
     default:
       return state;
   }
@@ -113,6 +115,15 @@ export function WorkoutProvider({ children }: { children: ReactNode }) {
     const { roster, ...persistable } = state;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(persistable));
   }, [state]);
+  
+  // Sync generated roster to MySQL backend
+  useEffect(() => {
+    fetch('/api/workouts/sync', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ roster: state.roster })
+    }).catch(err => console.error('Failed to sync roster to backend', err));
+  }, [state.roster]);
   
   const contextValue = useMemo(() => ({ state, dispatch, todayIso }), [state, dispatch, todayIso]);
   

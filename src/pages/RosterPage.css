@@ -1,23 +1,21 @@
 .roster-page {
   min-height: 100vh;
-  max-width: 600px;
-  margin: 0 auto;
+  width: 100%;
   position: relative;
-  transition: max-width var(--transition-slow);
   padding: 0;
 }
 
 .roster-body {
-  padding: 0 20px 80px 20px;
+  padding: 0 16px 80px 16px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
 }
 
 .roster-sidebar, .roster-main {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
 .roster-main {
@@ -34,17 +32,24 @@
   overflow: hidden;
 }
 
-/* Desktop & Tablet */
-@media (min-width: 820px) {
+@media (max-width: 767px) {
+  .roster-body {
+    padding: 0 12px 80px 12px;
+    gap: 16px;
+  }
+}
+
+@media (min-width: 768px) {
   .roster-page {
-    max-width: 1440px;
     padding: 0 40px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .roster-body {
     display: grid;
-    grid-template-columns: 360px 1fr;
-    gap: 48px;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
     padding: 32px 0 60px;
     align-items: start;
   }
@@ -55,20 +60,5 @@
     max-height: calc(100vh - 64px);
     overflow-y: auto;
     padding-right: 8px;
-    gap: 28px;
-  }
-
-  .roster-sidebar::-webkit-scrollbar {
-    width: 2px;
-  }
-  .roster-sidebar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.06);
-  }
-}
-
-@media (max-width: 400px) {
-  .roster-body {
-    padding: 0 12px 80px 12px;
-    gap: 20px;
   }
 }

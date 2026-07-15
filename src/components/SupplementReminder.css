@@ -1,0 +1,245 @@
+.supplement-reminder {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.supp-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.supp-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.supp-icon {
+  color: var(--color-warning);
+}
+
+.supp-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.supp-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+.supp-score-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.supp-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Supplement Card */
+.supp-card {
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.supp-card.taken {
+  border-color: var(--color-success);
+  background: rgba(34, 197, 94, 0.05);
+}
+
+.supp-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.supp-emoji {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.supp-card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.supp-card-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.supp-card-timing {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.supp-check-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.supp-check-btn.checked {
+  background: var(--color-success);
+  border-color: transparent;
+  color: #000;
+}
+
+.supp-sub-check {
+  padding: 12px 16px 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.supp-sub-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+  width: 100%;
+  justify-content: flex-start;
+  min-height: 40px;
+}
+
+.sub-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid var(--border-medium);
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.sub-dot.filled {
+  background: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.supp-warning-text {
+  font-size: 12px;
+  color: var(--color-warning);
+  padding: 8px 0 0 30px;
+  line-height: 1.4;
+}
+
+/* D3-K2 Effectiveness */
+.d3k2-effectiveness {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eff-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.eff-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--border-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.eff-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+  background: var(--color-warning);
+}
+
+.eff-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eff-score-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.eff-explanation {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Issues */
+.supp-issues {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.supp-issue {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  line-height: 1.5;
+}
+
+/* Save */
+.supp-save-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.supp-save-btn:hover {
+  background: var(--border-subtle);
+}

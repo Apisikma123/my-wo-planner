@@ -29,7 +29,7 @@ export function generateRoster(startDate: Date, weekCount: number = 8, completed
     const isoDate = toIsoString(currentDate);
     
     const phaseInfo = getPhaseInfo(weekIndex);
-    const exercises = generateWorkout(workoutType, phaseInfo.mesocycle, phaseInfo.phase);
+    const exercises = generateWorkout(workoutType, phaseInfo.mesocycle, phaseInfo.phase, phaseInfo.phaseWeek);
     
     const isCompleted = completedDays.includes(isoDate);
     const isBeforeStart = currentDate.getTime() < startDate.getTime();

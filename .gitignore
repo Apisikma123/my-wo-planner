@@ -44,3 +44,13 @@ jdk17.zip
 jdk21/
 jdk21.zip
 *.apk
+
+# Gradle build cache and outputs
+.gradle/
+build/
+
+# PWA Dev build output
+dev-dist/
+
+# Server local config
+server/.env

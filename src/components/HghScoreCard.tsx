@@ -7,19 +7,17 @@ interface HghScoreCardProps {
   score: number;
   tip: string;
   exercises: Exercise[];
+  isoDate?: string;
 }
 
-export default function HghScoreCard({ score, exercises }: HghScoreCardProps) {
+export default function HghScoreCard({ score, tip, exercises, isoDate }: HghScoreCardProps) {
   const color = getHghColor(score);
   const label = getHghLabel(score);
-
-
-  const hasHang = true; // Auto-done by user daily
-  const hasHiTempo = true; // High-tempo explosive workout stimulates durability
+  const hasHang = exercises.some(e => e.name.toLowerCase().includes('hang') || e.name.toLowerCase().includes('pullup') || e.name.toLowerCase().includes('chin'));
+  const hasHiTempo = exercises.some(e => e.name.toLowerCase().includes('jump') || e.name.toLowerCase().includes('sprint') || e.category === 'hiit');
   const hasCompound = exercises.some(e => e.category === 'compound');
 
   const factors = [
-
     { Icon: Anchor, name: 'Dead Hang', active: hasHang, points: 15 },
     { Icon: Flame, name: 'Hi-Tempo Durab', active: hasHiTempo, points: 15 },
     { Icon: Dumbbell, name: 'Compound', active: hasCompound, points: 20 },

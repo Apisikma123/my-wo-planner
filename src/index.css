@@ -1,60 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* ── Dark Gym Background ── */
-  --bg-primary: #060a10;
-  --bg-secondary: rgba(14, 18, 28, 0.55);
-  --bg-card: rgba(16, 20, 32, 0.5);
-  --bg-elevated: rgba(22, 28, 42, 0.6);
-  --bg-hover: rgba(255, 255, 255, 0.08);
+  /* ── Solid Professional Dark Theme (Zinc/Neutral) ── */
+  --bg-primary: #09090b; /* zinc-950 */
+  --bg-secondary: #18181b; /* zinc-900 */
+  --bg-card: #18181b;
+  --bg-elevated: #27272a; /* zinc-800 */
+  --bg-hover: #27272a;
 
-  /* ── Glass Tokens ── */
-  --glass-bg: rgba(12, 16, 26, 0.55);
-  --glass-bg-strong: rgba(10, 14, 24, 0.7);
-  --glass-blur: 20px;
-  --glass-blur-strong: 28px;
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-border-bright: rgba(255, 255, 255, 0.22);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --glass-shadow-elevated: 0 12px 48px rgba(0, 0, 0, 0.5);
-  --glass-glow: 0 0 1px rgba(255, 255, 255, 0.08);
+  /* ── Workout Colors — Muted / Professional ── */
+  --color-push: #f97316; /* orange-500 */
+  --color-pull: #a855f7; /* purple-500 */
+  --color-legs: #10b981; /* emerald-500 */
+  --color-rest: #64748b; /* slate-500 */
+  --color-fullrest: #334155; /* slate-700 */
 
-  /* ── Workout Colors — vivid & saturated ── */
-  --color-push: #ff7b4f;
-  --color-pull: #b78aff;
-  --color-legs: #4ce68a;
-  --color-rest: #5c7a96;
-  --color-fullrest: rgba(30, 34, 44, 0.5);
-
-  /* ── Phase Colors — high visibility ── */
-  --color-adaptation: #50d8ff;
-  --color-overload: #4ef592;
-  --color-peak: #ffd044;
-  --color-deload: #f794c0;
+  /* ── Phase Colors ── */
+  --color-adaptation: #38bdf8;
+  --color-overload: #10b981;
+  --color-peak: #f59e0b;
+  --color-deload: #f43f5e;
 
   /* ── Accent ── */
-  --color-accent: #7cb4ff;
-  --color-hgh: #8fc2ff;
-  --color-success: #4ef592;
-  --color-warning: #ffd044;
-  --color-danger: #ff6b6b;
+  --color-accent: #3b82f6; /* blue-500 */
+  --color-hgh: #60a5fa; /* blue-400 */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
 
-  /* ── Text — ultra high contrast ── */
-  --text-primary: #ffffff;
-  --text-secondary: #dcdce6;
-  --text-muted: #b0b0c0;
-  --text-dim: #7a7a90;
+  /* ── Text ── */
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa; /* zinc-400 */
+  --text-muted: #71717a; /* zinc-500 */
+  --text-dim: #52525b; /* zinc-600 */
 
-  /* ── Borders ── */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-medium: rgba(255, 255, 255, 0.14);
-  --border-bright: rgba(255, 255, 255, 0.25);
+  /* ── Borders (Subtle 1px lines) ── */
+  --border-subtle: #27272a;
+  --border-medium: #3f3f46;
+  --border-bright: #52525b;
 
   /* ── Font ── */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'Inter', monospace;
 
-  /* ── Spacing ── */
+  /* ── Spacing (8pt Grid) ── */
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
@@ -62,11 +51,11 @@
   --space-xl: 32px;
   --space-2xl: 48px;
 
-  /* ── Radius ── */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
+  /* ── Radius (More structured, less rounded) ── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
   --radius-full: 9999px;
 
   /* ── Transitions ── */
@@ -93,31 +82,6 @@ html, body, #root {
   line-height: 1.5;
 }
 
-/* ── Gym Background Layer ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: url('/gym-bg.png') center/cover no-repeat;
-  filter: blur(4px) brightness(0.3);
-  z-index: 0;
-  pointer-events: none;
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(6, 10, 16, 0.7) 0%,
-    rgba(6, 10, 16, 0.5) 40%,
-    rgba(6, 10, 16, 0.7) 100%
-  );
-  z-index: 0;
-  pointer-events: none;
-}
-
 #root {
   position: relative;
   z-index: 1;
@@ -130,24 +94,16 @@ button {
   outline: none;
   background: none;
   color: inherit;
-  min-height: 44px;
-  min-width: 44px;
   position: relative;
   overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: opacity var(--transition-fast), transform var(--transition-fast), background-color var(--transition-fast);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 button:active {
-  opacity: 0.75;
-  transform: scale(0.97);
-}
-
-a, input[type="button"], input[type="submit"] {
-  min-height: 44px;
-  min-width: 44px;
+  opacity: 0.8;
 }
 
 input {
@@ -160,119 +116,80 @@ input {
 
 /* Scrollbar — nearly invisible */
 ::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
+  width: 4px;
+  height: 4px;
 }
-
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--border-medium);
   border-radius: var(--radius-full);
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--border-bright);
 }
 
 /* ── Animations ── */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
-}
-
-@keyframes glow {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.97); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes glassShine {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
 }
 
 .fade-in {
-  animation: fadeIn 0.3s ease forwards;
+  animation: fadeIn 0.25s ease forwards;
 }
-
 .slide-up {
-  animation: slideUp 0.35s ease forwards;
+  animation: slideUp 0.3s ease forwards;
 }
 
-.scale-in {
-  animation: scaleIn 0.2s ease forwards;
+/* ── Premium Card Style (Replaces Glassmorphism) ── */
+.glass, .glass-strong {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* ── Glassmorphism Utility ── */
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow), var(--glass-glow);
-}
-
-.glass-strong {
-  background: var(--glass-bg-strong);
-  backdrop-filter: blur(var(--glass-blur-strong));
-  -webkit-backdrop-filter: blur(var(--glass-blur-strong));
-  border: 1px solid var(--glass-border-bright);
-  box-shadow: var(--glass-shadow-elevated), var(--glass-glow);
-}
-
-/* ── Soft glow effects ── */
-.glow-push { box-shadow: var(--glass-shadow), 0 0 24px rgba(255, 123, 79, 0.1); }
-.glow-pull { box-shadow: var(--glass-shadow), 0 0 24px rgba(183, 138, 255, 0.1); }
-.glow-legs { box-shadow: var(--glass-shadow), 0 0 24px rgba(76, 230, 138, 0.1); }
-.glow-accent { box-shadow: var(--glass-shadow), 0 0 24px rgba(124, 180, 255, 0.1); }
-
-/* Today pulse */
-.today-dot {
-  animation: glow 3s ease-in-out infinite;
+/* Remove glows */
+.glow-push, .glow-pull, .glow-legs, .glow-accent {
+  box-shadow: none;
 }
 
 /* Layout */
+.app-container {
+  min-height: 100vh;
+  position: relative;
+  background: var(--bg-primary); 
+  display: flex;
+  flex-direction: column;
+}
+
 .container {
-  max-width: 480px;
-  margin: 0 auto;
   padding: 0 var(--space-md);
 }
 
-/* Responsive */
-@media (max-width: 480px) {
-  :root {
-    --space-md: 12px;
+/* Responsive Desktop (Admin Panel Style) */
+@media (min-width: 768px) {
+  .app-container {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-areas: "sidebar main";
   }
+  .main-content {
+    grid-area: main;
+    min-height: 100vh;
+    padding-bottom: 0;
+  }
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }

@@ -1,21 +1,17 @@
 .today-banner {
-  background: var(--glass-bg);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: 1px solid var(--glass-border);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 18px 20px;
-  transition: all var(--transition-base);
-  box-shadow: var(--glass-shadow), var(--glass-glow);
+  padding: 16px 20px;
 }
 
 .today-label {
   font-size: 11px;
-  letter-spacing: 3px;
-  color: #ffffff;
-  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  font-weight: 700;
   margin-bottom: 8px;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  text-transform: uppercase;
 }
 
 .today-content {
@@ -26,41 +22,37 @@
 
 .today-date {
   font-size: 13px;
-  color: #ffffff;
-  opacity: 0.95;
+  color: var(--text-primary);
   margin-bottom: 4px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .today-type {
   font-size: 18px;
-  font-weight: 900;
-  text-shadow: 0 0 12px currentColor;
+  font-weight: 800;
 }
 
 .today-status {
-  font-size: 13px;
-  color: var(--text-secondary);
+  font-size: 12px;
+  color: var(--text-muted);
   font-weight: 600;
 }
 
 .today-btn {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid var(--glass-border-bright) !important;
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-subtle) !important;
   border-radius: var(--radius-sm);
   padding: 8px 16px;
-  font-size: 10px;
-  letter-spacing: 1.5px;
+  font-size: 11px;
+  letter-spacing: 1px;
   font-weight: 700;
   transition: all var(--transition-fast);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  color: var(--text-primary);
 }
 
 .today-btn:hover {
-  transform: none;
-  filter: brightness(1.3);
-  background: rgba(255, 255, 255, 0.14) !important;
+  background: var(--bg-hover) !important;
+  border-color: var(--border-medium) !important;
 }
 
 @media (max-width: 400px) {

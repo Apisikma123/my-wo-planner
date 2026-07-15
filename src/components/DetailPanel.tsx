@@ -306,7 +306,7 @@ export default function DetailPanel({ day, onClose, onStartSession }: DetailPane
 
           {/* HGH Score Card */}
           {isWorkout && (
-            <HghScoreCard score={day.hghScore} tip={hghTip} exercises={day.exercises} />
+            <HghScoreCard score={day.hghScore} tip={hghTip} exercises={day.exercises} isoDate={day.isoDate} />
           )}
 
           {/* Prominent Start/Resume Button in Center */}

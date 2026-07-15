@@ -1,8 +1,9 @@
 import React from 'react';
 import { useWorkoutEngine } from '../hooks/useWorkoutEngine';
+import { useGrowth } from '../store/growthStore';
 import { formatFullDate } from '../utils/dateUtils';
 import { TYPE_COLORS, TYPE_LABELS } from '../utils/constants';
-import { MapPin, Clock, CheckCircle2, Dumbbell, RotateCcw, Footprints, BedDouble, LucideIcon } from 'lucide-react';
+import { MapPin, Clock, CheckCircle2, Dumbbell, RotateCcw, Footprints, BedDouble, LucideIcon, Zap } from 'lucide-react';
 import './TodayBanner.css';
 
 const typeIconMap: Record<string, LucideIcon> = {
@@ -15,6 +16,7 @@ const typeIconMap: Record<string, LucideIcon> = {
 
 export default function TodayBanner() {
   const { todayWorkout, todayIso, selectDay, roster } = useWorkoutEngine();
+  const { compositeScore } = useGrowth();
   
   const todayLabel = formatFullDate(new Date());
   const col = todayWorkout ? TYPE_COLORS[todayWorkout.workoutType] : '#1e3050';
@@ -35,8 +37,13 @@ export default function TodayBanner() {
         boxShadow: todayWorkout ? `0 0 20px ${col}15` : 'none',
       }}
     >
-      <div className="today-label">
-        <MapPin size={11} style={{ verticalAlign: 'middle', marginRight: 4 }} /> HARI INI
+      <div className="today-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+        <div className="today-label">
+          <MapPin size={11} style={{ verticalAlign: 'middle', marginRight: 4 }} /> HARI INI
+        </div>
+        <div style={{ fontSize: 10, fontWeight: 700, color: compositeScore >= 80 ? '#22c55e' : '#fbbf24', display: 'flex', alignItems: 'center', gap: 4 }}>
+          <Zap size={10} /> {compositeScore} GROWTH SCORE
+        </div>
       </div>
       <div className="today-content">
         <div>

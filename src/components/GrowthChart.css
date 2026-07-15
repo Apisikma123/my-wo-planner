@@ -1,0 +1,82 @@
+.growth-chart-container {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.chart-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+}
+
+.chart-wrapper {
+  padding: 16px 0;
+  width: 100%;
+}
+
+.growth-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.grid-line {
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-width: 1;
+}
+
+.axis-label {
+  fill: var(--text-dim);
+  font-size: 10px;
+  text-anchor: end;
+  font-family: var(--font-mono);
+}
+
+.target-line {
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  opacity: 0.8;
+}
+
+.target-label {
+  fill: var(--color-accent);
+  font-size: 10px;
+  font-weight: 700;
+  alignment-baseline: middle;
+}
+
+.data-line {
+  fill: none;
+  stroke: #22c55e;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 2px 4px rgba(34, 197, 94, 0.4));
+}
+
+.data-point {
+  fill: #fff;
+  stroke: #22c55e;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.6));
+}
+
+.point-label-val {
+  fill: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.point-label-date {
+  fill: var(--text-muted);
+  font-size: 9px;
+}
